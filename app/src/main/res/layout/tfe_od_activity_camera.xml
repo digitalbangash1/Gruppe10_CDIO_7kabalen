@@ -64,7 +64,7 @@
                 android:layout_marginStart="60dp"
                 android:layout_marginBottom="60dp"
                 android:backgroundTint="#00FF00"
-                android:text="Go"></Button>
+                android:text="Go" />
 
             <Button
                 android:id="@+id/Scan_btn"
@@ -74,15 +74,14 @@
                 android:layout_marginEnd="60dp"
                 android:layout_marginBottom="60dp"
                 android:backgroundTint="#FFA500"
-                android:text="scan"></Button>
+                android:text="scan" />
         </FrameLayout>
 
     </RelativeLayout>
 
     <include
         android:id="@+id/bottom_sheet_layout"
-        layout="@layout/tfe_od_layout_bottom_sheet"
-        android:layout_height="156dp" />
+        layout="@layout/tfe_od_layout_bottom_sheet" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/MyRecyclerView"

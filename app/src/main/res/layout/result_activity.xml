@@ -64,19 +64,30 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:gravity="center"
         >
 
         <Button
-            android:id="@+id/next_btn"
-            android:layout_width="wrap_content"
+            android:id="@+id/Back_btn"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center_vertical"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="15dp"
-            android:text="Next"
+            android:text="Try again"
             android:backgroundTint="#00FF00">
+
+        </Button>
+        <Button
+            android:id="@+id/Exit_btn"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:text="Back to rules"
+            android:backgroundTint="#FF0000">
 
         </Button>
     </LinearLayout>

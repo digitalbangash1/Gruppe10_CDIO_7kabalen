@@ -27,6 +27,7 @@ import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.media.ImageReader.OnImageAvailableListener;
+import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Size;
 import android.util.TypedValue;
@@ -237,6 +238,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
   @Override
   protected int getLayoutId() {
     return R.layout.tfe_od_camera_connection_fragment_tracking;
+
   }
 
   @Override
@@ -270,7 +272,6 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
   protected void setNumThreads(final int numThreads) {
     runInBackground(() -> detector.setNumThreads(numThreads));
   }
-
 
 
 

@@ -14,30 +14,23 @@
  limitations under the License.
 -->
 
+
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#00000000">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/black"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"></RelativeLayout>
 
 
-        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context="org.tensorflow.demo.CameraActivity" />
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -52,18 +45,56 @@
                 android:src="@drawable/tfl2_logo" />
         </androidx.appcompat.widget.Toolbar>
 
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="-4dp"
+            android:layout_marginBottom="-27dp"
+            tools:context="org.tensorflow.demo.CameraActivity">
+
+
+            <Button
+                android:id="@+id/Go_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginStart="60dp"
+                android:layout_marginBottom="60dp"
+                android:backgroundTint="#00FF00"
+                android:text="Go"></Button>
+
+            <Button
+                android:id="@+id/Scan_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginEnd="60dp"
+                android:layout_marginBottom="60dp"
+                android:backgroundTint="#FFA500"
+                android:text="scan"></Button>
+        </FrameLayout>
+
     </RelativeLayout>
-
-    <Button
-        android:id="@+id/add_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        android:layout_gravity="center|bottom">
-
-    </Button>
 
     <include
         android:id="@+id/bottom_sheet_layout"
-        layout="@layout/tfe_od_layout_bottom_sheet" />
+        layout="@layout/tfe_od_layout_bottom_sheet"
+        android:layout_height="156dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/MyRecyclerView"
+        android:layout_width="439dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="70dp"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        app:layout_anchor="@+id/bottom_sheet_layout"
+        app:layout_anchorGravity="top|center"
+        tools:listitem="@layout/cardsitem" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+

@@ -117,7 +117,8 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="15dp"
-            android:text="Next">
+            android:text="Next"
+            android:backgroundTint="#00FF00">
 
         </Button>
     </LinearLayout>

@@ -17,3 +17,4 @@ public enum Suit {
         return suit;
     }
 }
+

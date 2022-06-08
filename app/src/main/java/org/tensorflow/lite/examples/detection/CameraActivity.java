@@ -19,6 +19,7 @@ package org.tensorflow.lite.examples.detection;
 import android.Manifest;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
@@ -42,6 +43,7 @@ import android.view.Surface;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -88,6 +90,8 @@ public abstract class CameraActivity extends AppCompatActivity
 
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
+
+
     LOGGER.d("onCreate " + this);
     super.onCreate(null);
     getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -96,6 +100,30 @@ public abstract class CameraActivity extends AppCompatActivity
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
     getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+    /*************************************************/
+    Button Go_btn = (Button) findViewById(R.id.Go_btn);
+    Go_btn.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View v) {
+        Intent i = new Intent(getApplicationContext(),ResultActivity.class);
+        startActivity(i);
+      }
+    });
+
+
+
+
+    /*
+    Button Scan_btn = (Button) findViewById(R.id.Scan_btn);
+    Scan_btn.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View v) {
+        Intent i = new Intent(getApplicationContext(),ResultActivity.class);
+        startActivity(i);
+      }
+    });
+   */
+
+
 
     if (hasPermission()) {
       setFragment();
@@ -547,4 +575,5 @@ public abstract class CameraActivity extends AppCompatActivity
   protected abstract void setNumThreads(int numThreads);
 
   protected abstract void setUseNNAPI(boolean isChecked);
+
 }

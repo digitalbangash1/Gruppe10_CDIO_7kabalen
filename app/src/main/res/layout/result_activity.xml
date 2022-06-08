@@ -29,7 +29,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="585dp"
+        android:layout_height="464dp"
         android:orientation="vertical">
 
 
@@ -41,21 +41,56 @@
             android:textAlignment="center"
             android:textColor="#000"
             android:textSize="32dp"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/MyRecyclerView"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:foregroundGravity="center"
-            android:gravity="center"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/sitem" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="10dp">
+
+            <TextView
+                android:id="@+id/FirstResul"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="•Result 1"
+                android:textSize="25sp">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="•Result 2"
+                android:textSize="25sp">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="•Result 3"
+                android:textSize="25sp">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="•Result 4"
+                android:textSize="25sp">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="•Result 5"
+                android:textSize="25sp">
+
+            </TextView>
+
+        </LinearLayout>
 
 
     </LinearLayout>

@@ -88,8 +88,14 @@ public abstract class CameraActivity extends AppCompatActivity
   private SwitchCompat apiSwitchCompat;
   private TextView threadsTextView;
 
+  protected Button scan;
+
+  protected TextView firstResult;
+
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
+
+    scan = findViewById(R.id.Scan_btn);
 
 
     LOGGER.d("onCreate " + this);
@@ -112,16 +118,16 @@ public abstract class CameraActivity extends AppCompatActivity
 
 
 
-
-    /*
     Button Scan_btn = (Button) findViewById(R.id.Scan_btn);
     Scan_btn.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
-        Intent i = new Intent(getApplicationContext(),ResultActivity.class);
-        startActivity(i);
+
+
       }
     });
-   */
+
+
+
 
 
 
@@ -577,3 +583,4 @@ public abstract class CameraActivity extends AppCompatActivity
   protected abstract void setUseNNAPI(boolean isChecked);
 
 }
+

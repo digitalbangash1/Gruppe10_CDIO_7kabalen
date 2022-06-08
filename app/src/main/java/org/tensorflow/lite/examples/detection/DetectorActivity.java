@@ -66,6 +66,8 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
   private Detector detector;
 
+  List<String> allCards = new ArrayList<>();
+
   private long lastProcessingTimeMs;
   private Bitmap rgbFrameBitmap = null;
   private Bitmap croppedBitmap = null;
@@ -207,8 +209,15 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
                 result.setLocation(location);
                 mappedRecognitions.add(result);
-                System.out.println(result);
 
+                String card = result.getTitle();
+
+                if (!allCards.contains(card)) {
+                  allCards.add(card);
+                }
+
+                System.out.println("Name of the card: " + result.getTitle());
+                System.out.println("Contents of arraylist: " + allCards);
 
               }
             }

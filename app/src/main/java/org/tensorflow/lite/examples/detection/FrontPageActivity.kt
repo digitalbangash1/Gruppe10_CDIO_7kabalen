@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 
 class FrontPageActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_frontpage)
@@ -15,7 +16,6 @@ class FrontPageActivity : AppCompatActivity() {
         nextButton.setOnClickListener(){
             val switchActivityIntent = Intent(this, DetectorActivity::class.java)
             startActivity(switchActivityIntent)
-
         }
 
     }

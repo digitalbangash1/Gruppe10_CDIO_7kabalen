@@ -113,6 +113,17 @@ public abstract class CameraActivity extends AppCompatActivity
 
 
 
+    /*
+    Button Scan_btn = (Button) findViewById(R.id.Scan_btn);
+    Scan_btn.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View v) {
+        Intent i = new Intent(getApplicationContext(),ResultActivity.class);
+        startActivity(i);
+      }
+    });
+   */
+
+
 
     if (hasPermission()) {
       setFragment();

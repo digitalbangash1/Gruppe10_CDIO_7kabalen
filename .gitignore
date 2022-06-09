@@ -1,13 +1,27 @@
 *.iml
 .gradle
 /local.properties
+
+*.log
+
+.idea/
 /.idea/libraries
 /.idea/modules.xml
 /.idea/workspace.xml
+misc.xml
+deploymentTargetDropDown.xml
+render.experimental.xml
 .DS_Store
 /build
+
+*.jks
+*.keystore
+
 /captures
 .externalNativeBuild
+.cxx/
+*.apk
+output.json
 
 /.gradle/
 /.idea/

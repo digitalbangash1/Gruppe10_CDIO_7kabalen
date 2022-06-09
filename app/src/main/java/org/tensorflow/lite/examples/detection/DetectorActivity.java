@@ -81,6 +81,10 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
   private Detector detector;
 
+  public List<String> getAllCards() {
+    return allCards;
+  }
+
   List<String> allCards = new ArrayList<>();
 
   private long lastProcessingTimeMs;
@@ -241,8 +245,8 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                 String theNewCard = card;
 
 
-                  System.out.println("Name of the card: " + result.getTitle());
-                  System.out.println("Contents of arraylist: " + allCards);
+                  //System.out.println("Name of the card: " + result.getTitle());
+                 // System.out.println("Contents of arraylist: " + allCards);
 
                 }
               }
@@ -269,11 +273,21 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
 
   public void ClickMe (View v){
-    Context context = getApplicationContext();
+
+    System.out.println("get the batata"+ getAllCards().toString());
+
+
+    /*Context context = getApplicationContext();
     CharSequence text = "Hello toast!";
     int duration = Toast.LENGTH_SHORT;
     Toast toast = Toast.makeText(context, text, duration);
-    toast.show();
+    toast.show();*/
+  }
+
+  public void remove(View v){
+    int index = getAllCards().size()-1;
+    getAllCards().remove(index);
+    System.out.println("get the new batata" +getAllCards().toString());
   }
 
 

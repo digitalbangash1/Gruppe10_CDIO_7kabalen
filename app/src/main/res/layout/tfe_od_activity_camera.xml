@@ -53,7 +53,20 @@
             tools:context="org.tensorflow.demo.CameraActivity">
 
 
+            <TextView
+                android:id="@+id/hey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
 
+                android:layout_marginBottom="150dp"
+
+                android:textColor="#FFF"
+                android:textSize="36sp">
+
+            </TextView>
 
             <Button
                 android:id="@+id/Scan_btn"
@@ -63,7 +76,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginBottom="60dp"
                 android:backgroundTint="#FFA500"
-                android:onClick="ClickMe"
+                android:onClick="addToList"
                 android:text="scan" />
 
             <Button
@@ -81,10 +94,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|bottom"
-                android:onClick="remove"
-                android:layout_marginBottom="60dp"
                 android:layout_marginRight="30dp"
+                android:layout_marginBottom="60dp"
                 android:backgroundTint="#FF0000"
+                android:onClick="remove"
                 android:text="Remove" />
         </FrameLayout>
 
@@ -94,7 +107,7 @@
         android:id="@+id/bottom_sheet_layout"
         layout="@layout/tfe_od_layout_bottom_sheet" />
 
-    <androidx.recyclerview.widget.RecyclerView
+<!--    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/MyRecyclerView"
         android:layout_width="wrap_content"
         android:layout_height="200dp"
@@ -104,7 +117,7 @@
         android:gravity="center"
         app:layout_anchor="@+id/bottom_sheet_layout"
         app:layout_anchorGravity="top|center"
-        tools:listitem="@layout/cardsitem" />
+        tools:listitem="@layout/cardsitem" />-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

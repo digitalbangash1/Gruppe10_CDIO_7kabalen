@@ -16,8 +16,6 @@
 
 package org.tensorflow.lite.examples.detection;
 
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
@@ -28,14 +26,16 @@ import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.media.ImageReader.OnImageAvailableListener;
-import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Size;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -238,10 +238,20 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                 result.setLocation(location);
                 mappedRecognitions.add(result);
 
+               /* for (int i = 0; i < allCards.size(); i++) {
+                 resultTV.append(allCards.get(i));
+
+                }*/
+
                   String card = result.getTitle();
                   if (!allCards.contains(card) && result.getConfidence() > minimumConfidenceScan) {
                     allCards.add(card);
                   }
+
+
+
+
+                //updateTextView("hey");
                   //System.out.println("Name of the card: " + result.getTitle());
                  // System.out.println("Contents of arraylist: " + allCards);
 
@@ -270,8 +280,10 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
   /*********************************************************/
 
-  public void ClickMe (View v){
+  public void addToList(View v){
+
     System.out.println("get the batata"+ getAllCards().toString());
+
   }
   /*********************************************************/
 
@@ -280,6 +292,9 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     getAllCards().remove(index);
     System.out.println("get the new batata" +getAllCards().toString());
   }
+
+
+
 
 
 

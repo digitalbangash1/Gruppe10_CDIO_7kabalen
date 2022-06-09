@@ -53,33 +53,25 @@
             tools:context="org.tensorflow.demo.CameraActivity">
 
 
-            <Button
-                android:id="@+id/Go_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginStart="60dp"
-                android:layout_marginBottom="60dp"
-                android:backgroundTint="#00FF00"
-                android:text="Go" />
+
 
             <Button
                 android:id="@+id/Scan_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginEnd="60dp"
+                android:layout_gravity="left|bottom"
+                android:layout_marginStart="30dp"
                 android:layout_marginBottom="60dp"
                 android:backgroundTint="#FFA500"
                 android:onClick="ClickMe"
                 android:text="scan" />
 
             <Button
-                android:id="@+id/Go_btn"
+                android:id="@+id/Goo_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginStart="60dp"
+
                 android:layout_marginBottom="60dp"
                 android:backgroundTint="#00FF00"
                 android:text="Go" />
@@ -91,9 +83,9 @@
                 android:layout_gravity="right|bottom"
                 android:onClick="remove"
                 android:layout_marginBottom="60dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="#00FF00"
-                android:text="Go" />
+                android:layout_marginRight="30dp"
+                android:backgroundTint="#FF0000"
+                android:text="Remove" />
         </FrameLayout>
 
     </RelativeLayout>

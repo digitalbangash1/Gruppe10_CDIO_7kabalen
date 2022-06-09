@@ -107,7 +107,7 @@ public abstract class CameraActivity extends AppCompatActivity
     getSupportActionBar().setDisplayShowTitleEnabled(false);
 
     /*************************************************/
-    Button Go_btn = (Button) findViewById(R.id.Go_btn);
+    Button Go_btn = (Button) findViewById(R.id.Goo_btn);
     Go_btn.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         Intent i = new Intent(getApplicationContext(),ResultActivity.class);

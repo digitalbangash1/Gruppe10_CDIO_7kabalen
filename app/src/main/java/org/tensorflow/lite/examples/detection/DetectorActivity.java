@@ -242,9 +242,6 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                   if (!allCards.contains(card) && result.getConfidence() > minimumConfidenceScan) {
                     allCards.add(card);
                   }
-                String theNewCard = card;
-
-
                   //System.out.println("Name of the card: " + result.getTitle());
                  // System.out.println("Contents of arraylist: " + allCards);
 
@@ -271,18 +268,12 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
   }
 
 
+  /*********************************************************/
 
   public void ClickMe (View v){
-
     System.out.println("get the batata"+ getAllCards().toString());
-
-
-    /*Context context = getApplicationContext();
-    CharSequence text = "Hello toast!";
-    int duration = Toast.LENGTH_SHORT;
-    Toast toast = Toast.makeText(context, text, duration);
-    toast.show();*/
   }
+  /*********************************************************/
 
   public void remove(View v){
     int index = getAllCards().size()-1;

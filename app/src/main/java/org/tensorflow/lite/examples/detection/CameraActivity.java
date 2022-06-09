@@ -17,6 +17,7 @@
 package org.tensorflow.lite.examples.detection;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
@@ -88,14 +89,12 @@ public abstract class CameraActivity extends AppCompatActivity
   private SwitchCompat apiSwitchCompat;
   private TextView threadsTextView;
 
-  protected Button scan;
 
-  protected TextView firstResult;
-
+  @SuppressLint("CutPasteId")
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
 
-    scan = findViewById(R.id.Scan_btn);
+
 
 
     LOGGER.d("onCreate " + this);
@@ -118,13 +117,19 @@ public abstract class CameraActivity extends AppCompatActivity
 
 
 
-    Button Scan_btn = (Button) findViewById(R.id.Scan_btn);
-    Scan_btn.setOnClickListener(new View.OnClickListener() {
-      public void onClick(View v) {
+    /*
+        Go_btn.setOnClickListener(new View.OnClickListener() {
+          public void onClick(View v) {
+            Button Scan_btn = (Button) findViewById(R.id.Scan_btn);
+            Context context = getApplicationContext();
+            CharSequence text = "Hello toast!";
+            int duration = Toast.LENGTH_SHORT;
 
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+          }
+        });*/
 
-      }
-    });
 
 
 

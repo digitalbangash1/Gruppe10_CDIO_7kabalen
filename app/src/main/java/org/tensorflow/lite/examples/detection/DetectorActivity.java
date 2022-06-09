@@ -33,6 +33,7 @@ import android.os.SystemClock;
 import android.util.Size;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 import java.io.IOException;
@@ -53,8 +54,13 @@ import org.tensorflow.lite.examples.detection.tracking.MultiBoxTracker;
  * An activity that uses a TensorFlowMultiBoxDetector and ObjectTracker to detect and then track
  * objects.
  */
-public class DetectorActivity extends CameraActivity implements OnImageAvailableListener {
+public class DetectorActivity extends CameraActivity implements OnImageAvailableListener, OnClickListener {
   private static final Logger LOGGER = new Logger();
+
+
+
+
+
 
   // Configuration values for the prepackaged SSD model.
   private static final int TF_OD_API_INPUT_SIZE = 300;
@@ -63,9 +69,11 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
   private static final String TF_OD_API_LABELS_FILE = "labelmap.txt";
   private static final DetectorMode MODE = DetectorMode.TF_OD_API;
   // Minimum detection confidence to track a detection.
-  private static final float MINIMUM_CONFIDENCE_TF_OD_API = 0.5f;
+  private static final float MINIMUM_CONFIDENCE_TF_OD_API = 0.4f;
+  private static final float MINIMUM_CONFIDENCE_TF_OD_API_scan = 0.7f;
+
   private static final boolean MAINTAIN_ASPECT = false;
-  private static final Size DESIRED_PREVIEW_SIZE = new Size(1920, 1440);
+  private static final Size DESIRED_PREVIEW_SIZE = new Size(640, 480);
   private static final boolean SAVE_PREVIEW_BITMAP = false;
   private static final float TEXT_SIZE_DIP = 10;
   OverlayView trackingOverlay;
@@ -203,11 +211,15 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
             paint.setStrokeWidth(2.0f);
 
             float minimumConfidence = MINIMUM_CONFIDENCE_TF_OD_API;
+            float minimumConfidenceScan = MINIMUM_CONFIDENCE_TF_OD_API_scan;
+
             switch (MODE) {
               case TF_OD_API:
                 minimumConfidence = MINIMUM_CONFIDENCE_TF_OD_API;
+                minimumConfidenceScan = MINIMUM_CONFIDENCE_TF_OD_API_scan;
                 break;
             }
+
 
             final List<Detector.Recognition> mappedRecognitions =
                 new ArrayList<Detector.Recognition>();
@@ -222,17 +234,19 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                 result.setLocation(location);
                 mappedRecognitions.add(result);
 
-                String card = result.getTitle();
+                  String card = result.getTitle();
+                  if (!allCards.contains(card) && result.getConfidence() > minimumConfidenceScan) {
+                    allCards.add(card);
+                  }
+                String theNewCard = card;
 
-                if (!allCards.contains(card)) {
-                  allCards.add(card);
+
+                  System.out.println("Name of the card: " + result.getTitle());
+                  System.out.println("Contents of arraylist: " + allCards);
+
                 }
-
-                System.out.println("Name of the card: " + result.getTitle());
-                System.out.println("Contents of arraylist: " + allCards);
-
               }
-            }
+
 
             tracker.trackResults(mappedRecognitions, currTimestamp);
             trackingOverlay.postInvalidate();
@@ -251,6 +265,18 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
           }
         });
   }
+
+
+
+  public void ClickMe (View v){
+    Context context = getApplicationContext();
+    CharSequence text = "Hello toast!";
+    int duration = Toast.LENGTH_SHORT;
+    Toast toast = Toast.makeText(context, text, duration);
+    toast.show();
+  }
+
+
 
   @Override
   protected int getLayoutId() {

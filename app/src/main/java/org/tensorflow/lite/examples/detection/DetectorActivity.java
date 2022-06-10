@@ -38,6 +38,7 @@ import androidx.annotation.NonNull;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import org.tensorflow.lite.examples.detection.customview.OverlayView;
 import org.tensorflow.lite.examples.detection.customview.OverlayView.DrawCallback;
@@ -280,17 +281,25 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
   /*********************************************************/
 
-  public void addToList(View v){
+  public void addToList(View v) {
 
-    System.out.println("get the batata"+ getAllCards().toString());
+    List<String> input = Collections.singletonList(getAllCards().toString());
+
+    //resultTV.setText((CharSequence) input);
+    for (int i = 0; i < input.size(); i++) {
+      resultTV.append(input.get(i));
+
+      System.out.println("get the batata" + getAllCards().toString());
+
+    }
 
   }
   /*********************************************************/
 
-  public void remove(View v){
+  public void removeFromList(View v){
     int index = getAllCards().size()-1;
     getAllCards().remove(index);
-    System.out.println("get the new batata" +getAllCards().toString());
+    System.out.println("get the new batata" + getAllCards().toString());
   }
 
 

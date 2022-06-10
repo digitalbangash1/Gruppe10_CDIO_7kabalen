@@ -60,11 +60,12 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:layout_gravity="bottom"
-
                 android:layout_marginBottom="150dp"
-
                 android:textColor="#FFF"
-                android:textSize="36sp">
+                android:textSize="36sp"
+                android:background="@drawable/cards"
+
+                >
 
             </TextView>
 

@@ -95,6 +95,7 @@ public abstract class CameraActivity extends AppCompatActivity
     private SwitchCompat apiSwitchCompat;
     private TextView threadsTextView;
     protected TextView resultTV;
+    protected  Button go;
 
 
     @SuppressLint("CutPasteId")
@@ -112,16 +113,16 @@ public abstract class CameraActivity extends AppCompatActivity
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 
+/*
 
-
-        /*************************************************/
+        *//*************************************************//*
         Button Go_btn = (Button) findViewById(R.id.Goo_btn);
         Go_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), ResultActivity.class);
                 startActivity(i);
             }
-        });
+        });*/
 
 
 
@@ -160,6 +161,7 @@ public abstract class CameraActivity extends AppCompatActivity
         sheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
         bottomSheetArrowImageView = findViewById(R.id.bottom_sheet_arrow);
         resultTV = findViewById(R.id.hey);
+        go = findViewById(R.id.Goo_btn);
         //result.setText("hello");
 
 

@@ -16,6 +16,8 @@
 
 package org.tensorflow.lite.examples.detection;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
@@ -31,10 +33,7 @@ import android.util.Size;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -46,6 +45,8 @@ import org.tensorflow.lite.examples.detection.customview.OverlayView.DrawCallbac
 import org.tensorflow.lite.examples.detection.env.BorderedText;
 import org.tensorflow.lite.examples.detection.env.ImageUtils;
 import org.tensorflow.lite.examples.detection.env.Logger;
+import org.tensorflow.lite.examples.detection.logic.CardsMove;
+import org.tensorflow.lite.examples.detection.logic.MovesFinder;
 import org.tensorflow.lite.examples.detection.tflite.Detector;
 import org.tensorflow.lite.examples.detection.tflite.TFLiteObjectDetectionAPIModel;
 import org.tensorflow.lite.examples.detection.tracking.MultiBoxTracker;
@@ -82,7 +83,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         return allCards;
     }
 
-    List<String> allCards = new ArrayList<>();
+    ArrayList<String> allCards = new ArrayList<>();
 
     private long lastProcessingTimeMs;
     private Bitmap rgbFrameBitmap = null;
@@ -244,6 +245,8 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                                 }
 
 
+
+
                                 //updateTextView("hey");
                                 //System.out.println("Name of the card: " + result.getTitle());
                                 // System.out.println("Contents of arraylist: " + allCards);
@@ -285,6 +288,57 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
         }
 
+    }
+
+    public void ongoClick(View v){
+
+        //TEST
+        allCards.clear();
+        allCards.add("7S");
+        allCards.add("7C");
+        allCards.add("5D");
+        allCards.add("8D");
+        allCards.add("6D");
+        allCards.add("7D");
+        allCards.add("QH");
+        allCards.add("KC");
+
+        Intent intent = new Intent(getBaseContext(), ResultActivity.class);
+        intent.putExtra("EXTRA_CARDS_INPUT", allCards);
+        startActivity(intent);
+
+
+//        Context context = getApplicationContext();
+//        CharSequence text = "Hello toast!";
+//        int duration = Toast.LENGTH_SHORT;
+//
+//
+//        for (int i = 0; i < allCards.size(); i++) {
+//            System.out.println("hey"+allCards.get(i));
+//        }
+
+//        allCards.clear();
+//        allCards.add("7S");
+//        allCards.add("7C");
+//        allCards.add("5D");
+//        allCards.add("8D");
+//        allCards.add("6D");
+//        allCards.add("7D");
+//        allCards.add("QH");
+//        allCards.add("KC");
+
+//        System.out.println("toti2 allCards: " + allCards);
+
+//        MovesFinder movesFinder = new MovesFinder();
+//        ArrayList<CardsMove> moves = movesFinder.findMoves(allCards);
+//        System.out.println("toti print all moves: " + moves.size());
+//        for (int i = 0; i < moves.size(); i++) {
+//            System.out.println("toti move: "+moves.get(i).toString());
+//        }
+//        System.out.println("toti print all moves-----done");
+//
+//        Toast toast2 = Toast.makeText(context, "at lasttt: " + moves.size(), duration);
+//        toast2.show();
     }
 
     /*********************************************************/

@@ -84,7 +84,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|bottom"
-
+                android:onClick="ongoClick"
                 android:layout_marginBottom="60dp"
                 android:backgroundTint="#00FF00"
                 android:text="Go" />

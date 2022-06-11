@@ -1,10 +1,11 @@
 package org.tensorflow.lite.examples.detection.logic;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CardsMove {
 
-    private final ArrayList<Card2> cards = new ArrayList<>();
+    private final List<Card2> cards = new ArrayList<>();
 
     public CardsMove(Card2... cards){
         for (int i = 0; i < cards.length; i++) {
@@ -16,4 +17,13 @@ public class CardsMove {
         cards.add(card);
     }
 
+    @Override
+    public String toString() {
+        String info = "";
+        for (int i = 0; i < cards.size(); i++) {
+            Card2 card = cards.get(i);
+            info += card.getDescription()+card.getSuit().toString() + " ";
+        }
+        return info.trim();
+    }
 }

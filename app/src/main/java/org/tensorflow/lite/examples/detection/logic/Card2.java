@@ -32,12 +32,43 @@ public class Card2 {
         return !isRed();
     }
 
+    public String getDescription(){
+        if(rank >= 2 && rank <= 10){
+            return Integer.toString(rank);
+        }
+        switch (rank) {
+            case 1:
+                return "A";
+            case 11:
+                return "J";
+            case 12:
+                return "Q";
+            case 13:
+                return "K";
+            default:
+                return "???";
+        }
+    }
+
     private void findCardFromTitle(String title){
-        String suitValue = title.substring(title.length()-1);
-        String rankValue = title.replace(suitValue, "");
-        suit = Suit.valueOf(suitValue);
-        rank = getRankFromStringValue(rankValue);
-        suitColor = isRed() ? SuitColor.RED : SuitColor.BLACK;
+        try{
+            System.out.println(" mylog title: --------------------" + title);
+            title = title.trim();
+            String suitValue = title.substring(title.length()-1);
+            System.out.println("mylog suit value: " + suitValue);
+            String rankValue = title.replace(suitValue, "");
+            System.out.println("mylog rank value: " + rankValue);
+            suit = Suit.valueOf(suitValue);
+            System.out.println("mylog suit: " + suit);
+            rank = getRankFromStringValue(rankValue);
+            System.out.println("mylog rank : " + rank);
+            suitColor = isRed() ? SuitColor.RED : SuitColor.BLACK;
+            System.out.println("mylog ----------------------------------");
+        }
+        catch(Exception e){
+            Integer a = 0;
+            System.out.println("mylog exceptionnnnnnnnnnnnnnnn "+e.getMessage() );
+        }
     }
 
     private int getRankFromStringValue(String value){
@@ -58,6 +89,4 @@ public class Card2 {
             }
         }
     }
-
-
 }

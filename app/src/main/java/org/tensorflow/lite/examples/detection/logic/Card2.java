@@ -6,6 +6,7 @@ public class Card2 {
 
     private int rank;
     private Suit suit;
+    private SuitColor suitColor;
 
     public Card2(String title){
         findCardFromTitle(title);
@@ -17,6 +18,10 @@ public class Card2 {
 
     public Suit getSuit() {
         return suit;
+    }
+
+    public SuitColor getSuitColor() {
+        return suitColor;
     }
 
     public boolean isRed() {
@@ -32,6 +37,7 @@ public class Card2 {
         String rankValue = title.replace(suitValue, "");
         suit = Suit.valueOf(suitValue);
         rank = getRankFromStringValue(rankValue);
+        suitColor = isRed() ? SuitColor.RED : SuitColor.BLACK;
     }
 
     private int getRankFromStringValue(String value){

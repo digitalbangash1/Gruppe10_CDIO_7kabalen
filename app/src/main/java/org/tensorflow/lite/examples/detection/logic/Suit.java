@@ -8,13 +8,8 @@ public enum Suit {
     D("Diamonds");
 
     private String suit;
-
     Suit(String suit) {
         this.suit = suit;
-    }
-
-    String printSuit() {
-        return suit;
     }
 }
 

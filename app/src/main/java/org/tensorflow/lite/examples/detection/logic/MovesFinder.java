@@ -16,7 +16,7 @@ public class MovesFinder {
                 Card2 card = new Card2(cardTitles.get(j));
                 if(canCardAtHandBeOnTopOfSecondCard(cardAtHand, card)){
                     System.out.println("mylog move found");
-                    CardsMove move = new CardsMove(card, cardAtHand);
+                    CardsMove move = new CardsMove(cardAtHand,card);
                     moves.add(move);
                 }
                 else{

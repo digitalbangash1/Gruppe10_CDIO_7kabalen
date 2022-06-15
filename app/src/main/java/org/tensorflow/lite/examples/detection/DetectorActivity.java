@@ -79,6 +79,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
     private Detector detector;
 
+
     public List<String> getAllCards() {
         return allCards;
     }
@@ -100,6 +101,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     private MultiBoxTracker tracker;
 
     private BorderedText borderedText;
+
 
     @Override
     public void onPreviewSizeChosen(final Size size, final int rotation) {
@@ -245,8 +247,6 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                                 }
 
 
-
-
                                 //updateTextView("hey");
                                 //System.out.println("Name of the card: " + result.getTitle());
                                 // System.out.println("Contents of arraylist: " + allCards);
@@ -278,11 +278,23 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
     public void addToList(View v) {
 
+        resultTV.setText("");
+        allCards.clear();
+        allCards.add("7S");
+        allCards.add("7C");
+        allCards.add("5D");
+        allCards.add("8D");
+        allCards.add("6D");
+        allCards.add("7D");
+        allCards.add("QH");
+        allCards.add("KC");
+
         List<String> input = Collections.singletonList(getAllCards().toString());
 
         //resultTV.setText((CharSequence) input);
         for (int i = 0; i < input.size(); i++) {
             resultTV.append(input.get(i));
+            remove.setEnabled(true);
 
             System.out.println("get the batata" + getAllCards().toString());
 
@@ -290,7 +302,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
     }
 
-    public void ongoClick(View v){
+    public void ongoClick(View v) {
 
         //TEST
         allCards.clear();
@@ -345,8 +357,34 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
     public void removeFromList(View v) {
         int index = getAllCards().size() - 1;
+        if(getAllCards().isEmpty()){
+            remove.setEnabled(false);
+        }else
+
         getAllCards().remove(index);
+
+            //remove.setEnabled(true);
+
+
+
+
+
+        updateTextView();
+
+
         System.out.println("get the new batata" + getAllCards().toString());
+    }
+
+    public void updateTextView() {
+        resultTV.setText("");
+        resultTV.setText(getAllCards().toString());
+    }
+
+    public void showNewResult(CharSequence result) {
+        if (allCards.contains(result)) {
+
+        }
+
     }
 
 

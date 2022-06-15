@@ -96,6 +96,7 @@ public abstract class CameraActivity extends AppCompatActivity
     private TextView threadsTextView;
     protected TextView resultTV;
     protected  Button go;
+    protected Button remove;
 
 
     @SuppressLint("CutPasteId")
@@ -162,6 +163,7 @@ public abstract class CameraActivity extends AppCompatActivity
         bottomSheetArrowImageView = findViewById(R.id.bottom_sheet_arrow);
         resultTV = findViewById(R.id.hey);
         go = findViewById(R.id.Goo_btn);
+        remove = findViewById(R.id.remove_btn);
         //result.setText("hello");
 
 

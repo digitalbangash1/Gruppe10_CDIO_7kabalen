@@ -12,6 +12,10 @@ public class Card2 {
         findCardFromTitle(title);
     }
 
+    public Card2() {
+
+    }
+
     public int getRank() {
         return rank;
     }

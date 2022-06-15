@@ -2,10 +2,11 @@ package org.tensorflow.lite.examples.detection
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlin.system.exitProcess
+import org.tensorflow.lite.examples.detection.logic.MovesFinder
 
 
 class ResultActivity : AppCompatActivity() {
@@ -24,6 +25,23 @@ class ResultActivity : AppCompatActivity() {
             startActivity(switchActivityIntent)
 
         }
+
+        val resultTextView = findViewById<TextView>(R.id.Result)
+
+        val allCards = intent.getStringArrayListExtra("EXTRA_CARDS_INPUT")
+        val movesFinder = MovesFinder()
+        val moves = movesFinder.findMoves(allCards)
+        var allMovesText = "";
+        println("mylog print all moves: " + moves.size)
+        for (i in moves.indices) {
+            println("mylog move: " + moves[i].toString())
+            allMovesText += moves[i].toString() + "; "
+        }
+        resultTextView.setText(allMovesText)
+        println("mylog print all moves-----done")
+
+        val toast2 = Toast.makeText(this, "at lasttt: " + moves.size, Toast.LENGTH_SHORT)
+        toast2.show()
 
     }
 

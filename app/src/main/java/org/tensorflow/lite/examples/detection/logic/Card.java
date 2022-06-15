@@ -22,8 +22,8 @@ public class Card {
         return suit == Suit.H || suit == Suit.D;
     }
 
-    @Override
-    public String toString() {
-        return getCardType().printRank() +" of "+ getSuit().printSuit();
-    }
+//    @Override
+//    public String toString() {
+//        return getCardType().printRank() +" of "+ getSuit().printSuit();
+//    }
 }

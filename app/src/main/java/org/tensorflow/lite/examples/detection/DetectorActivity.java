@@ -240,7 +240,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                 }*/
 
                                 String card = result.getTitle();
-                                if (!allCards.contains(card) && result.getConfidence() > minimumConfidenceScan) {
+                                if (!allCards.contains(card) && result.getConfidence() > minimumConfidenceScan && scan_btn.isPressed()) {
                                     allCards.add(card);
                                 }
 
@@ -277,15 +277,13 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     /*********************************************************/
 
     public void addToList(View v) {
+        resultTV.setText("");
 
         List<String> input = Collections.singletonList(getAllCards().toString());
-
         //resultTV.setText((CharSequence) input);
         for (int i = 0; i < input.size(); i++) {
             resultTV.append(input.get(i));
-
             System.out.println("get the batata" + getAllCards().toString());
-
         }
 
     }
@@ -347,6 +345,8 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         int index = getAllCards().size() - 1;
         getAllCards().remove(index);
         System.out.println("get the new batata" + getAllCards().toString());
+
+
     }
 
 

@@ -96,6 +96,7 @@ public abstract class CameraActivity extends AppCompatActivity
     private TextView threadsTextView;
     protected TextView resultTV;
     protected  Button go;
+    protected  Button scan_btn;
 
 
     @SuppressLint("CutPasteId")
@@ -163,6 +164,7 @@ public abstract class CameraActivity extends AppCompatActivity
         resultTV = findViewById(R.id.hey);
         go = findViewById(R.id.Goo_btn);
         //result.setText("hello");
+        scan_btn =findViewById(R.id.Scan_btn);
 
 
         ViewTreeObserver vto = gestureLayout.getViewTreeObserver();

@@ -8,6 +8,7 @@
 
 
     <TextView
+
         android:id="@+id/list_item"
         android:layout_width="40dp"
         android:layout_height="60dp"
@@ -15,7 +16,6 @@
         android:background="@drawable/cards"
         android:textSize="20sp"
         android:textColor="#FFF"
-
         android:textStyle="bold"/>
 
 </LinearLayout>

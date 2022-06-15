@@ -5,11 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3F51B5"
+    android:background="@drawable/back"
     android:orientation="vertical"
-
-
-
     tools:context=".FrontPageActivity">
 
 
@@ -23,11 +20,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@drawable/border"
             android:gravity="center"
             android:text="@string/welcome_to_the_game"
-            android:textColor="#FFF"
-            android:textSize="32sp">
+            android:textColor="#000"
+            android:textSize="32sp"
+            android:textStyle="bold">
 
         </TextView>
     </LinearLayout>
@@ -45,8 +42,10 @@
             android:layout_marginTop="15dp"
             android:text="@string/rules"
             android:textAlignment="center"
-            android:textColor="#FFF"
-            android:textSize="32sp">
+            android:textColor="#D88100"
+            android:textSize="32sp"
+            android:textStyle="bold">
+
 
 
         </TextView>
@@ -60,42 +59,33 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="•Rule 1"
-                android:textSize="25sp">
-
+                android:layout_marginTop="15dp"
+                android:text="The rules for this app are:"
+                android:textAlignment="textStart"
+                android:textColor="#774C0D"
+                android:textSize="32sp"
+                android:textStyle="bold">
             </TextView>
+
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="•Rule 2"
-                android:textSize="25sp">
-
+                android:gravity="center|start"
+                android:textColor="#000000"
+                android:text="
+            \n1.You can scan as many cards as you want.\n
+            \n 2.You can scan one or many cards at the same time.\n
+            \n3.You can just scan the cards with 70% confidence or more.\n
+            \n4.Make sure there is enough lighting and that the camera  is in a somewhat stable position.\n
+            \n5.Each time you scan a card, you can see it on the screen.\n
+            \n6.Pressing the Remove button will delete the last card you scanned.\n
+            \n7.Pressing the Go button you can see the list of moves you can make.
+            "
+                android:textSize="20sp">
             </TextView>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="•Rule 3"
-                android:textSize="25sp">
 
-            </TextView>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="•Rule 4"
-                android:textSize="25sp">
-
-            </TextView>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="•Rule 5"
-                android:textSize="25sp">
-
-            </TextView>
 
         </LinearLayout>
 

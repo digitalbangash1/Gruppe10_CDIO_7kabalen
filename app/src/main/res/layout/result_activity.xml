@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Result:"
+            android:text="Result:\n"
             android:textAlignment="center"
             android:textColor="#000"
             android:textSize="32dp"
@@ -54,41 +54,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="•Result 1"
-                android:textSize="25sp">
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="#392E2E">
 
             </TextView>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="•Result 2"
-                android:textSize="25sp">
-
-            </TextView>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="•Result 3"
-                android:textSize="25sp">
-
-            </TextView>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="•Result 4"
-                android:textSize="25sp">
-
-            </TextView>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="•Result 5"
-                android:textSize="25sp">
-
-            </TextView>
 
         </LinearLayout>
 

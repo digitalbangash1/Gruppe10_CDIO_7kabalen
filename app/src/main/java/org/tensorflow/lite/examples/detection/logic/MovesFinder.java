@@ -1,11 +1,14 @@
 package org.tensorflow.lite.examples.detection.logic;
 
+
+
 import java.util.ArrayList;
 
 public class MovesFinder {
 
     public ArrayList<CardsMove> findMoves(ArrayList<String> cardTitles){
         ArrayList<CardsMove> moves = new ArrayList<>();
+
         System.out.println("mylog before loop");
         for (int i = 0; i < cardTitles.size(); i++) {
             System.out.println("mylog inside loop");
@@ -16,8 +19,9 @@ public class MovesFinder {
                 Card2 card = new Card2(cardTitles.get(j));
                 if(canCardAtHandBeOnTopOfSecondCard(cardAtHand, card)){
                     System.out.println("mylog move found");
-                    CardsMove move = new CardsMove(card, cardAtHand);
+                    CardsMove move = new CardsMove(cardAtHand,card);
                     moves.add(move);
+
                 }
                 else{
                     System.out.println("mylog no move found");

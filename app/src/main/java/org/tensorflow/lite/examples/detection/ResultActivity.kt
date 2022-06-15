@@ -6,7 +6,10 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import org.tensorflow.lite.examples.detection.logic.Card2
 import org.tensorflow.lite.examples.detection.logic.MovesFinder
+import java.io.File.separator
+import java.lang.StringBuilder
 
 
 class ResultActivity : AppCompatActivity() {
@@ -27,6 +30,7 @@ class ResultActivity : AppCompatActivity() {
         }
 
         val resultTextView = findViewById<TextView>(R.id.Result)
+        val firsttext = findViewById<TextView>(R.id.FirstResul)
 
         val allCards = intent.getStringArrayListExtra("EXTRA_CARDS_INPUT")
         val movesFinder = MovesFinder()
@@ -35,9 +39,11 @@ class ResultActivity : AppCompatActivity() {
         println("mylog print all moves: " + moves.size)
         for (i in moves.indices) {
             println("mylog move: " + moves[i].toString())
-            allMovesText += moves[i].toString() + "; "
+
+
+            allMovesText +="* You can move "+ moves[i].toString() +"."+ "\n\n"
         }
-        resultTextView.setText(allMovesText)
+        firsttext.setText(allMovesText)
         println("mylog print all moves-----done")
 
         val toast2 = Toast.makeText(this, "at lasttt: " + moves.size, Toast.LENGTH_SHORT)

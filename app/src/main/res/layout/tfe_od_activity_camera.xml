@@ -54,19 +54,110 @@
 
 
             <TextView
-                android:id="@+id/hey"
+                android:id="@+id/firstColumn"
+                android:inputType="textMultiLine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
                 android:layout_gravity="bottom"
                 android:layout_marginBottom="150dp"
                 android:textColor="#FFF"
                 android:textSize="36sp"
                 android:background="@drawable/cards"
-
                 >
+            </TextView>
 
+            <TextView
+                android:id="@+id/secondColumn"
+                android:inputType="textMultiLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="50dp"
+                android:layout_marginBottom="150dp"
+                android:textColor="#2196F3"
+                android:textSize="36sp"
+                android:background="@drawable/cards"
+                >
+            </TextView>
+
+            <TextView
+                android:id="@+id/thirdColumn"
+                android:inputType="textMultiLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="100dp"
+                android:layout_marginBottom="150dp"
+                android:textColor="#E91E63"
+                android:textSize="36sp"
+                android:background="@drawable/cards"
+                >
+            </TextView>
+
+            <TextView
+                android:id="@+id/fourthColumn"
+                android:inputType="textMultiLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="150dp"
+                android:layout_marginBottom="150dp"
+                android:textColor="#00BCD4"
+                android:textSize="36sp"
+                android:background="@drawable/cards"
+                >
+            </TextView>
+
+            <TextView
+                android:id="@+id/fifthColumn"
+                android:inputType="textMultiLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="200dp"
+                android:layout_marginBottom="150dp"
+                android:textColor="#4CAF50"
+                android:textSize="36sp"
+                android:background="@drawable/cards"
+                >
+            </TextView>
+
+            <TextView
+                android:id="@+id/sixthColumn"
+                android:inputType="textMultiLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="250dp"
+                android:layout_marginBottom="150dp"
+                android:textColor="#009688"
+                android:textSize="36sp"
+                android:background="@drawable/cards"
+                >
+            </TextView>
+
+            <TextView
+                android:id="@+id/seventhColumn"
+                android:inputType="textMultiLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="300dp"
+                android:layout_marginBottom="150dp"
+                android:textColor="#9C27B0"
+                android:textSize="36sp"
+                android:background="@drawable/cards"
+                >
             </TextView>
 
             <Button
@@ -77,7 +168,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginBottom="60dp"
                 android:backgroundTint="#FFA500"
-                android:onClick="addToList"
+                android:onClick="chooseTheColumn"
                 android:text="scan" />
 
             <Button

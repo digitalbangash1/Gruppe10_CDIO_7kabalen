@@ -3,4 +3,14 @@
     <string name="tfe_od_camera_error" translation_description="Error regarding camera support[CHAR_LIMIT=40]">This device doesn\'t support Camera2 API.</string>
     <string name="welcome_to_the_game">Welcome to the game</string>
     <string name="rules">Rules:</string>
+
+    <string-array name="columns">
+        <item>Column 1</item>
+        <item>Column 2</item>
+        <item>Column 3</item>
+        <item>Column 4</item>
+        <item>Column 5</item>
+        <item>Column 6</item>
+        <item>Column 7</item>
+    </string-array>
 </resources>

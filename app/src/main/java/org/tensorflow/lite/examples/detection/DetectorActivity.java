@@ -16,7 +16,8 @@
 
 package org.tensorflow.lite.examples.detection;
 
-import android.content.Context;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -33,6 +34,7 @@ import android.util.Size;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -45,10 +47,6 @@ import org.tensorflow.lite.examples.detection.customview.OverlayView.DrawCallbac
 import org.tensorflow.lite.examples.detection.env.BorderedText;
 import org.tensorflow.lite.examples.detection.env.ImageUtils;
 import org.tensorflow.lite.examples.detection.env.Logger;
-import org.tensorflow.lite.examples.detection.logic.Card2;
-import org.tensorflow.lite.examples.detection.logic.CardColumn;
-import org.tensorflow.lite.examples.detection.logic.CardsMove;
-import org.tensorflow.lite.examples.detection.logic.MovesFinder;
 import org.tensorflow.lite.examples.detection.tflite.Detector;
 import org.tensorflow.lite.examples.detection.tflite.TFLiteObjectDetectionAPIModel;
 import org.tensorflow.lite.examples.detection.tracking.MultiBoxTracker;
@@ -81,19 +79,6 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
     private Detector detector;
 
-    public List<String> getAllCards() {
-        return allCards;
-    }
-
-    ArrayList<String> allCards = new ArrayList<>();
-
-    List<CardColumn> columns = new ArrayList<>(7);
-
-    private void addCard(String cardTitle, int columnId) {
-        Card2 card = new Card2(cardTitle);
-        CardColumn column = new CardColumn(columnId, card);
-        columns.add(column);
-    }
 
     private long lastProcessingTimeMs;
     private Bitmap rgbFrameBitmap = null;
@@ -110,6 +95,14 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     private MultiBoxTracker tracker;
 
     private BorderedText borderedText;
+
+    ArrayList<String> allCards = new ArrayList<>();
+
+    String card;
+
+    public List<String> getAllCards() {
+        return allCards;
+    }
 
     @Override
     public void onPreviewSizeChosen(final Size size, final int rotation) {
@@ -244,38 +237,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                                 result.setLocation(location);
                                 mappedRecognitions.add(result);
 
-               /* for (int i = 0; i < allCards.size(); i++) {
-                 resultTV.append(allCards.get(i));
-
-                }*/
-
-                                String card = result.getTitle();
-                                if (!allCards.contains(card) && result.getConfidence() > minimumConfidenceScan && scan_btn.isPressed()) {
-                                    allCards.add(card);
-                                }
-
-                                if (!allCards.contains(card) && result.getConfidence() > minimumConfidenceScan && scan_btn.isPressed()) {
-                                    allCards.add(card);
-                                }
-
-                                System.out.println(card + " location ID is " + result.getId());
-
-                                System.out.println(card + " location left is " + result.getLocation().left);
-                                System.out.println(card + " location right is " + result.getLocation().right);
-                                System.out.println(card + " location top is " + result.getLocation().top);
-                                System.out.println(card + " location bottom is " + result.getLocation().bottom);
-                                System.out.println(card + " location centerX is " + result.getLocation().centerX());
-                                System.out.println(card + " location centerY is " + result.getLocation().centerY());
-                                System.out.println(card + " location height is " + result.getLocation().height());
-                                System.out.println(card + " location width is " + result.getLocation().width());
-                                System.out.println(card + " location toShortString is " + result.getLocation().toShortString());
-
-
-
-
-                                //updateTextView("hey");
-                                //System.out.println("Name of the card: " + result.getTitle());
-                                // System.out.println("Contents of arraylist: " + allCards);
+                                card = result.getTitle();
 
                             }
                         }
@@ -302,15 +264,50 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
     /*********************************************************/
 
+
+
     public void addToList(View v) {
-        resultTV.setText("");
+        firstColumn.setText("");
 
         List<String> input = Collections.singletonList(getAllCards().toString());
-        //resultTV.setText((CharSequence) input);
         for (int i = 0; i < input.size(); i++) {
-            resultTV.append(input.get(i));
+            firstColumn.append(input.get(i));
             System.out.println("get the batata" + getAllCards().toString());
         }
+    }
+
+    public void chooseTheColumn(View v) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Choose to which column add the card: ");
+
+        String [] columns = {"1","2","3","4","5","6","7"};
+        builder.setItems(columns, (dialogInterface, which) -> {
+                switch (which) {
+                    case 1:
+                        firstColumn.append(card);
+                        break;
+                    case 2:
+                        secondColumn.append(card);
+                        break;
+                    case 3:
+                        thirdColumn.append(card);
+                        break;
+                    case 4:
+                        fourthColumn.append(card);
+                        break;
+                    case 5:
+                        fifthColumn.append(card);
+                        break;
+                    case 6:
+                        sixthColumn.append(card);
+                        break;
+                    case 7:
+                        seventhColumn.append(card);
+                        break;
+                }
+            });
+        AlertDialog dialog = builder.create();
+        dialog.show();
 
     }
 
@@ -318,14 +315,6 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
         //TEST
         allCards.clear();
-        allCards.add("7S");
-        allCards.add("7C");
-        allCards.add("5D");
-        allCards.add("8D");
-        allCards.add("6D");
-        allCards.add("7D");
-        allCards.add("QH");
-        allCards.add("KC");
 
         Intent intent = new Intent(getBaseContext(), ResultActivity.class);
         intent.putExtra("EXTRA_CARDS_INPUT", allCards);

@@ -20,7 +20,6 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
@@ -94,7 +93,13 @@ public abstract class CameraActivity extends AppCompatActivity
     private ImageView plusImageView, minusImageView;
     private SwitchCompat apiSwitchCompat;
     private TextView threadsTextView;
-    protected TextView resultTV;
+    protected TextView firstColumn;
+    protected TextView secondColumn;
+    protected TextView thirdColumn;
+    protected TextView fourthColumn;
+    protected TextView fifthColumn;
+    protected TextView sixthColumn;
+    protected TextView seventhColumn;
     protected  Button go;
     protected  Button scan_btn;
 
@@ -161,7 +166,13 @@ public abstract class CameraActivity extends AppCompatActivity
         gestureLayout = findViewById(R.id.gesture_layout);
         sheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
         bottomSheetArrowImageView = findViewById(R.id.bottom_sheet_arrow);
-        resultTV = findViewById(R.id.hey);
+        firstColumn = findViewById(R.id.firstColumn);
+        secondColumn = findViewById(R.id.secondColumn);
+        thirdColumn = findViewById(R.id.thirdColumn);
+        fourthColumn = findViewById(R.id.fourthColumn);
+        fifthColumn = findViewById(R.id.fifthColumn);
+        sixthColumn = findViewById(R.id.sixthColumn);
+        seventhColumn = findViewById(R.id.seventhColumn);
         go = findViewById(R.id.Goo_btn);
         //result.setText("hello");
         scan_btn =findViewById(R.id.Scan_btn);

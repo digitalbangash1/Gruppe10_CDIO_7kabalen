@@ -76,11 +76,7 @@
                 android:text="
             \n1.You can scan as many cards as you want.\n
             \n 2.You can scan one or many cards at the same time.\n
-            \n3.You can just scan the cards with 70% confidence or more.\n
-            \n4.Make sure there is enough lighting and that the camera  is in a somewhat stable position.\n
-            \n5.Each time you scan a card, you can see it on the screen.\n
-            \n6.Pressing the Remove button will delete the last card you scanned.\n
-            \n7.Pressing the Go button you can see the list of moves you can make.
+
             "
                 android:textSize="20sp">
             </TextView>

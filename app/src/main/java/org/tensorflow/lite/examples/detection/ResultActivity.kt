@@ -41,7 +41,7 @@ class ResultActivity : AppCompatActivity() {
             println("mylog move: " + moves[i].toString())
 
 
-            allMovesText +="* You can move "+ moves[i].toString() +"."+ "\n\n"
+            allMovesText +="* You can move "+ moves[i].toString() +". "+ "\n\n"
         }
         firsttext.setText(allMovesText)
         println("mylog print all moves-----done")

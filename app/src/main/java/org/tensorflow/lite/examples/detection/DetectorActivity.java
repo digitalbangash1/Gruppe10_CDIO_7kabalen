@@ -45,6 +45,8 @@ import org.tensorflow.lite.examples.detection.customview.OverlayView.DrawCallbac
 import org.tensorflow.lite.examples.detection.env.BorderedText;
 import org.tensorflow.lite.examples.detection.env.ImageUtils;
 import org.tensorflow.lite.examples.detection.env.Logger;
+import org.tensorflow.lite.examples.detection.logic.Card2;
+import org.tensorflow.lite.examples.detection.logic.CardColumn;
 import org.tensorflow.lite.examples.detection.logic.CardsMove;
 import org.tensorflow.lite.examples.detection.logic.MovesFinder;
 import org.tensorflow.lite.examples.detection.tflite.Detector;
@@ -84,6 +86,14 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     }
 
     ArrayList<String> allCards = new ArrayList<>();
+
+    List<CardColumn> columns = new ArrayList<>(7);
+
+    private void addCard(String cardTitle, int columnId) {
+        Card2 card = new Card2(cardTitle);
+        CardColumn column = new CardColumn(columnId, card);
+        columns.add(column);
+    }
 
     private long lastProcessingTimeMs;
     private Bitmap rgbFrameBitmap = null;
@@ -222,7 +232,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
 
                         final List<Detector.Recognition> mappedRecognitions =
-                                new ArrayList<Detector.Recognition>();
+                                new ArrayList<>();
 
                         for (final Detector.Recognition result : results) {
                             final RectF location = result.getLocation();
@@ -243,6 +253,22 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                                 if (!allCards.contains(card) && result.getConfidence() > minimumConfidenceScan && scan_btn.isPressed()) {
                                     allCards.add(card);
                                 }
+
+                                if (!allCards.contains(card) && result.getConfidence() > minimumConfidenceScan && scan_btn.isPressed()) {
+                                    allCards.add(card);
+                                }
+
+                                System.out.println(card + " location ID is " + result.getId());
+
+                                System.out.println(card + " location left is " + result.getLocation().left);
+                                System.out.println(card + " location right is " + result.getLocation().right);
+                                System.out.println(card + " location top is " + result.getLocation().top);
+                                System.out.println(card + " location bottom is " + result.getLocation().bottom);
+                                System.out.println(card + " location centerX is " + result.getLocation().centerX());
+                                System.out.println(card + " location centerY is " + result.getLocation().centerY());
+                                System.out.println(card + " location height is " + result.getLocation().height());
+                                System.out.println(card + " location width is " + result.getLocation().width());
+                                System.out.println(card + " location toShortString is " + result.getLocation().toShortString());
 
 
 
@@ -345,9 +371,9 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         int index = getAllCards().size() - 1;
         getAllCards().remove(index);
         System.out.println("get the new batata" + getAllCards().toString());
-
-
     }
+
+
 
 
     @Override

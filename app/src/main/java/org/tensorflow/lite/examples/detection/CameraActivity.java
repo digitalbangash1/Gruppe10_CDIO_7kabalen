@@ -101,8 +101,8 @@ public abstract class CameraActivity extends AppCompatActivity
     protected  Button go;
     protected  Button scan_btn;
     protected Spinner spinner;
-
-
+    protected Button remove;
+    private DetectorActivity detectorActivity;
     @SuppressLint("CutPasteId")
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -170,13 +170,37 @@ public abstract class CameraActivity extends AppCompatActivity
         //result.setText("hello");
         scan_btn =findViewById(R.id.Scan_btn);
         spinner = findViewById(R.id.spinner);
+        remove= findViewById(R.id.remove_btn);
 
 
         ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this, R.array.columns, android.R.layout.simple_spinner_item);
 
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+
+
+               // detectorActivity.whenColumnSelected();
+                 String newItem= spinner.getSelectedItem().toString();
+                // Toast.makeText(getApplicationContext(),"You selected"+newItem,Toast.LENGTH_LONG).show();
+               }
+
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+       // spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+
+        //Toast.makeText(this,"salam",Toast.LENGTH_LONG).show();
+
 
 
 

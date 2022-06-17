@@ -42,4 +42,11 @@ public class MovesFinder {
         return true;
     }
 
+    private Boolean canColumnAtHandBeOnTopofSecondCard(Card2 columnAtHand,Card2 column){
+
+
+
+        return null;
+    }
+
 }

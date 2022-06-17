@@ -61,9 +61,9 @@
                 android:layout_alignParentBottom="true"
                 android:layout_gravity="bottom"
                 android:layout_marginBottom="150dp"
+                android:background="@drawable/cards"
                 android:textColor="#FFF"
                 android:textSize="36sp"
-                android:background="@drawable/cards"
 
                 >
 
@@ -85,9 +85,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|bottom"
-                android:onClick="ongoClick"
                 android:layout_marginBottom="60dp"
                 android:backgroundTint="#00FF00"
+                android:onClick="ongoClick"
                 android:text="Go" />
 
             <Button
@@ -100,6 +100,15 @@
                 android:backgroundTint="#FF0000"
                 android:onClick="removeFromList"
                 android:text="Remove" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity=""
+                android:text="choose"
+                android:onClick="selectColumnn">
+
+            </Button>
         </FrameLayout>
 
     </RelativeLayout>

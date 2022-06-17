@@ -16,7 +16,7 @@
 
 package org.tensorflow.lite.examples.detection;
 
-import android.content.Context;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -45,8 +45,6 @@ import org.tensorflow.lite.examples.detection.customview.OverlayView.DrawCallbac
 import org.tensorflow.lite.examples.detection.env.BorderedText;
 import org.tensorflow.lite.examples.detection.env.ImageUtils;
 import org.tensorflow.lite.examples.detection.env.Logger;
-import org.tensorflow.lite.examples.detection.logic.CardsMove;
-import org.tensorflow.lite.examples.detection.logic.MovesFinder;
 import org.tensorflow.lite.examples.detection.tflite.Detector;
 import org.tensorflow.lite.examples.detection.tflite.TFLiteObjectDetectionAPIModel;
 import org.tensorflow.lite.examples.detection.tracking.MultiBoxTracker;
@@ -83,7 +81,9 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         return allCards;
     }
 
+
     ArrayList<String> allCards = new ArrayList<>();
+
 
     private long lastProcessingTimeMs;
     private Bitmap rgbFrameBitmap = null;
@@ -245,8 +245,6 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                                 }
 
 
-
-
                                 //updateTextView("hey");
                                 //System.out.println("Name of the card: " + result.getTitle());
                                 // System.out.println("Contents of arraylist: " + allCards);
@@ -274,12 +272,100 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     }
 
 
-    /*********************************************************/
+    /********************************************************************************************/
 
 
+    public void selectColumnn(View v) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Choose column");
+        String[] columns = {"1", "2", "3", "4", "5", "6", "7"};
+        builder.setItems(columns, ((dialogInterface, which) -> {
+            switch (which) {
+                case 0:
+                    addToTheFirstColumn();
+                    break;
+                case 1:
+                    addToTheSecondColumn();
+                    break;
+                case 2:
+                    addToTheThirdColumn();
+                    break;
+                case 3:
+                    addToTheFourthColumn();
+                    break;
+                case 4:
+                    addToTheFifthColumn();
+                    break;
+                case 5:
+                    addToTheSixthColumn();
+                    break;
+                case 6:
+                    addToTheSeventhColumn();
+                    break;
+            }
+        }));
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+    }
+
+    private void addToTheFirstColumn() {
+
+        ArrayList firstColumn= (ArrayList) allCards.clone();
+        System.out.println("mylog"+firstColumn.get(0));
+        System.out.println("mylog first " + firstColumn);
+
+
+    }
+    private void addToTheSecondColumn() {
+
+        ArrayList secondColumn= (ArrayList) allCards.clone();
+        System.out.println("mylog second" + secondColumn);
+
+    }
+    private void addToTheThirdColumn() {
+
+        ArrayList thirdColumn= (ArrayList) allCards.clone();
+        System.out.println("mylog third" + thirdColumn);
+
+    }
+    private void addToTheFourthColumn() {
+
+        ArrayList fourthColumn= (ArrayList) allCards.clone();
+        System.out.println("mylog " + fourthColumn);
+
+    }
+    private void addToTheFifthColumn() {
+
+        ArrayList fifthColumn = (ArrayList) allCards.clone();
+        System.out.println("mylog " + fifthColumn);
+
+    }
+    private void addToTheSixthColumn() {
+
+        ArrayList sixthColumn = (ArrayList) allCards.clone();
+        System.out.println("mylog " + sixthColumn);
+
+    }
+    private void addToTheSeventhColumn() {
+
+        ArrayList seventhColumn = (ArrayList) allCards.clone();
+        System.out.println("mylog " + seventhColumn);
+
+    }
 
 
     public void addToList(View v) {
+
+        allCards.clear();
+        allCards.add("7S");
+        allCards.add("7C");
+        allCards.add("5D");
+        allCards.add("8D");
+        allCards.add("6D");
+        allCards.add("7D");
+        allCards.add("QH");
+        allCards.add("KC");
         resultTV.setText("");
 
         List<String> input = Collections.singletonList(getAllCards().toString());
@@ -291,7 +377,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
     }
 
-    public void ongoClick(View v){
+    public void ongoClick(View v) {
 
         //TEST
         allCards.clear();
@@ -342,17 +428,30 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 //        toast2.show();
     }
 
-    /*********************************************************/
 
     public void removeFromList(View v) {
         int index = getAllCards().size() - 1;
+        if(getAllCards().isEmpty()){
+            remove.setEnabled(false);
+
+        }
         getAllCards().remove(index);
-        System.out.println("get the new batata" + getAllCards().toString());
+
+        updateTextView();
 
 
+        System.out.println("mylog" + getAllCards().toString());
+    }
+
+    public void updateTextView() {
+        resultTV.setText("");
+        resultTV.setText(getAllCards().toString());
     }
 
 
+
+
+    /******************************************************************************************/
     @Override
     protected int getLayoutId() {
         return R.layout.tfe_od_camera_connection_fragment_tracking;

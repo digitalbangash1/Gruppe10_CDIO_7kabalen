@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="false">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -69,7 +73,8 @@
 
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/amount"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center|start"
                 android:textColor="#000000"
@@ -82,7 +87,9 @@
             \n6.Pressing the Remove button will delete the last card you scanned.\n
             \n7.Pressing the Go button you can see the list of moves you can make.
             "
-                android:textSize="20sp">
+                android:textSize="20sp"
+
+                >
             </TextView>
 
 
@@ -118,3 +125,4 @@
 
 </LinearLayout>
 
+</ScrollView>

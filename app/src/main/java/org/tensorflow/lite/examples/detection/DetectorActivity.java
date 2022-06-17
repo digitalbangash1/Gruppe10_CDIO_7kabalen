@@ -276,6 +276,9 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
     /*********************************************************/
 
+
+
+
     public void addToList(View v) {
         resultTV.setText("");
 

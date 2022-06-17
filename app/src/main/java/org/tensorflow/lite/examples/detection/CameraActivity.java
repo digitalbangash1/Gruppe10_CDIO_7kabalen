@@ -46,10 +46,13 @@ import android.view.Surface;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -97,6 +100,7 @@ public abstract class CameraActivity extends AppCompatActivity
     protected TextView resultTV;
     protected  Button go;
     protected  Button scan_btn;
+    protected Spinner spinner;
 
 
     @SuppressLint("CutPasteId")
@@ -165,6 +169,22 @@ public abstract class CameraActivity extends AppCompatActivity
         go = findViewById(R.id.Goo_btn);
         //result.setText("hello");
         scan_btn =findViewById(R.id.Scan_btn);
+        spinner = findViewById(R.id.spinner);
+
+
+        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this, R.array.columns, android.R.layout.simple_spinner_item);
+
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spinner.setAdapter(adapter);
+
+
+
+
+
+
+
+
 
 
         ViewTreeObserver vto = gestureLayout.getViewTreeObserver();

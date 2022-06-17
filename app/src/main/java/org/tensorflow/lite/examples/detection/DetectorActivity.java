@@ -311,42 +311,48 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
     private void addToTheFirstColumn() {
 
-        ArrayList firstColumn= (ArrayList) allCards.clone();
-        System.out.println("mylog"+firstColumn.get(0));
+        ArrayList firstColumn = (ArrayList) allCards.clone();
+        System.out.println("mylog" + firstColumn.get(0));
         System.out.println("mylog first " + firstColumn);
 
 
     }
+
     private void addToTheSecondColumn() {
 
-        ArrayList secondColumn= (ArrayList) allCards.clone();
+        ArrayList secondColumn = (ArrayList) allCards.clone();
         System.out.println("mylog second" + secondColumn);
 
     }
+
     private void addToTheThirdColumn() {
 
-        ArrayList thirdColumn= (ArrayList) allCards.clone();
+        ArrayList thirdColumn = (ArrayList) allCards.clone();
         System.out.println("mylog third" + thirdColumn);
 
     }
+
     private void addToTheFourthColumn() {
 
-        ArrayList fourthColumn= (ArrayList) allCards.clone();
+        ArrayList fourthColumn = (ArrayList) allCards.clone();
         System.out.println("mylog " + fourthColumn);
 
     }
+
     private void addToTheFifthColumn() {
 
         ArrayList fifthColumn = (ArrayList) allCards.clone();
         System.out.println("mylog " + fifthColumn);
 
     }
+
     private void addToTheSixthColumn() {
 
         ArrayList sixthColumn = (ArrayList) allCards.clone();
         System.out.println("mylog " + sixthColumn);
 
     }
+
     private void addToTheSeventhColumn() {
 
         ArrayList seventhColumn = (ArrayList) allCards.clone();
@@ -372,6 +378,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         //resultTV.setText((CharSequence) input);
         for (int i = 0; i < input.size(); i++) {
             resultTV.append(input.get(i));
+            remove.setEnabled(true);
             System.out.println("get the batata" + getAllCards().toString());
         }
 
@@ -431,11 +438,11 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
     public void removeFromList(View v) {
         int index = getAllCards().size() - 1;
-        if(getAllCards().isEmpty()){
+        if (getAllCards().isEmpty()) {
             remove.setEnabled(false);
 
-        }
-        getAllCards().remove(index);
+        } else
+            getAllCards().remove(index);
 
         updateTextView();
 
@@ -447,8 +454,6 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         resultTV.setText("");
         resultTV.setText(getAllCards().toString());
     }
-
-
 
 
     /******************************************************************************************/

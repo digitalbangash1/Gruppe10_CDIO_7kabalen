@@ -29,7 +29,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="464dp"
+        android:layout_height="423dp"
         android:orientation="vertical">
 
 
@@ -54,9 +54,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="•Result 1"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:textColor="#392E2E">
+                android:textColor="#392E2E"
+                android:textSize="20sp"
+                android:textStyle="bold">
 
             </TextView>
 

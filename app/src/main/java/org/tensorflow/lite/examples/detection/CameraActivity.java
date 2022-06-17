@@ -185,9 +185,10 @@ public abstract class CameraActivity extends AppCompatActivity
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
 
 
-               // detectorActivity.whenColumnSelected();
+               //detectorActivity.whenColumnSelected();
                  String newItem= spinner.getSelectedItem().toString();
                 // Toast.makeText(getApplicationContext(),"You selected"+newItem,Toast.LENGTH_LONG).show();
+
                }
 
 

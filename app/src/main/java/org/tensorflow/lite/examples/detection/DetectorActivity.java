@@ -275,6 +275,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     /********************************************************************************************/
 
 
+
     public void selectColumnn(View v) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Choose column");
@@ -312,7 +313,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     private void addToTheFirstColumn() {
 
         ArrayList firstColumn = (ArrayList) allCards.clone();
-        System.out.println("mylog" + firstColumn.get(0));
+       // System.out.println("mylog" + firstColumn.get(0));
         System.out.println("mylog first " + firstColumn);
 
 
@@ -449,6 +450,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
         System.out.println("mylog" + getAllCards().toString());
     }
+
 
     public void updateTextView() {
         resultTV.setText("");

@@ -336,28 +336,28 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     private void addToTheFourthColumn() {
 
         ArrayList fourthColumn = (ArrayList) allCards.clone();
-        System.out.println("mylog " + fourthColumn);
+        System.out.println("mylog fourth" + fourthColumn);
 
     }
 
     private void addToTheFifthColumn() {
 
         ArrayList fifthColumn = (ArrayList) allCards.clone();
-        System.out.println("mylog " + fifthColumn);
+        System.out.println("mylog fifth" + fifthColumn);
 
     }
 
     private void addToTheSixthColumn() {
 
         ArrayList sixthColumn = (ArrayList) allCards.clone();
-        System.out.println("mylog " + sixthColumn);
+        System.out.println("mylog sixth" + sixthColumn);
 
     }
 
     private void addToTheSeventhColumn() {
 
         ArrayList seventhColumn = (ArrayList) allCards.clone();
-        System.out.println("mylog " + seventhColumn);
+        System.out.println("mylog seventh" + seventhColumn);
 
     }
 

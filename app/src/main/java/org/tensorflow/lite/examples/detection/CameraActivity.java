@@ -169,11 +169,12 @@ public abstract class CameraActivity extends AppCompatActivity
         go = findViewById(R.id.Goo_btn);
         //result.setText("hello");
         scan_btn =findViewById(R.id.Scan_btn);
-        spinner = findViewById(R.id.spinner);
+       // spinner = findViewById(R.id.spinner);
         remove= findViewById(R.id.remove_btn);
 
 
-        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this, R.array.columns, android.R.layout.simple_spinner_item);
+
+     /*   ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this, R.array.columns, android.R.layout.simple_spinner_item);
 
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -197,7 +198,7 @@ public abstract class CameraActivity extends AppCompatActivity
 
             }
         });
-
+*/
        // spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
 
         //Toast.makeText(this,"salam",Toast.LENGTH_LONG).show();

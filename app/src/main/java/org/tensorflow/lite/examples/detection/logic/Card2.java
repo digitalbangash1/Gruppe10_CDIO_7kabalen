@@ -4,16 +4,22 @@ import java.util.Locale;
 
 public class Card2 {
 
+    private String title;
     private int rank;
     private Suit suit;
     private SuitColor suitColor;
 
     public Card2(String title){
+        this.title = title;
         findCardFromTitle(title);
     }
 
     public Card2() {
 
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public int getRank() {
@@ -54,6 +60,7 @@ public class Card2 {
         }
     }
 
+
     private void findCardFromTitle(String title){
         try{
             System.out.println(" mylog title: --------------------" + title);
@@ -74,6 +81,8 @@ public class Card2 {
             System.out.println("mylog exceptionnnnnnnnnnnnnnnn "+e.getMessage() );
         }
     }
+
+
 
     private int getRankFromStringValue(String value){
         try {

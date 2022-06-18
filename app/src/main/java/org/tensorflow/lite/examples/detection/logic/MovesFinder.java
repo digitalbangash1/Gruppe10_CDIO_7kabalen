@@ -31,6 +31,47 @@ public class MovesFinder {
         return moves;
     }
 
+    public ArrayList<ColumnsMove> findMovesForColumns(ArrayList<String> commaSeparatedColumns){
+
+        //commaSeparatedColumns looks like this:
+        // 0: 2D,3D,5D
+        // 1: 2F,3D,5D
+
+        ArrayList<ColumnsMove> moves = new ArrayList<>();
+
+        System.out.println("mylog before loop");
+        for (int i = 0; i < commaSeparatedColumns.size(); i++) {
+            String commaSeparatedColumnAtHand = commaSeparatedColumns.get(i);
+            String[] columnAtHamCards = commaSeparatedColumnAtHand.split(",");
+            Card2 cardAtHand = new Card2(columnAtHamCards[0]);
+
+            System.out.println("mylog card made" +columnAtHamCards);
+            for (int j = 0; j < commaSeparatedColumns.size(); j++) {
+                System.out.println("mylog second card");
+
+                String commaSeparatedColumn = commaSeparatedColumns.get(j);
+                String[] columnCards = commaSeparatedColumn.split(",");
+                String lastCard = columnCards[columnCards.length-1];
+                Card2 card = new Card2(lastCard);
+                System.out.println("mylog secondcard made "+lastCard);
+
+                if(canCardAtHandBeOnTopOfSecondCard(cardAtHand, card)){
+
+                    // Here you have the answer: column nr i can be on top of column no j
+                    System.out.println("mylog move found");
+                    moves.add(new ColumnsMove(i+1, j+1));
+
+                }
+                else{
+                    System.out.println("mylog no move found");
+                }
+            }
+        }
+        return moves;
+    }
+
+
+
     private Boolean canCardAtHandBeOnTopOfSecondCard(Card2 cardAtHand, Card2 card){
         // Fail fast
         if(cardAtHand.getSuitColor() == card.getSuitColor()){
@@ -42,11 +83,6 @@ public class MovesFinder {
         return true;
     }
 
-    private Boolean canColumnAtHandBeOnTopofSecondCard(Card2 columnAtHand,Card2 column){
 
-
-
-        return null;
-    }
 
 }

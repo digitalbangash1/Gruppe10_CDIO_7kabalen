@@ -45,6 +45,8 @@ import org.tensorflow.lite.examples.detection.customview.OverlayView.DrawCallbac
 import org.tensorflow.lite.examples.detection.env.BorderedText;
 import org.tensorflow.lite.examples.detection.env.ImageUtils;
 import org.tensorflow.lite.examples.detection.env.Logger;
+import org.tensorflow.lite.examples.detection.logic.Card2;
+import org.tensorflow.lite.examples.detection.logic.CardsMove;
 import org.tensorflow.lite.examples.detection.tflite.Detector;
 import org.tensorflow.lite.examples.detection.tflite.TFLiteObjectDetectionAPIModel;
 import org.tensorflow.lite.examples.detection.tracking.MultiBoxTracker;
@@ -77,12 +79,12 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
     private Detector detector;
 
-    public List<String> getAllCards() {
+    public List<CardsMove> getAllCards() {
         return allCards;
     }
 
 
-    ArrayList<String> allCards = new ArrayList<>();
+    ArrayList<CardsMove> allCards = new ArrayList<>();
 
 
     private long lastProcessingTimeMs;
@@ -166,6 +168,8 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         tracker.setFrameConfiguration(previewWidth, previewHeight, sensorOrientation);
     }
 
+    ArrayList<String> currentScanCards = new ArrayList<>();
+
     @Override
     protected void processImage() {
         ++timestamp;
@@ -240,8 +244,8 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                 }*/
 
                                 String card = result.getTitle();
-                                if (!allCards.contains(card) && result.getConfidence() > minimumConfidenceScan && scan_btn.isPressed()) {
-                                    allCards.add(card);
+                                if (!currentScanCards.contains(card) && result.getConfidence() > minimumConfidenceScan && scan_btn.isPressed()) {
+                                    currentScanCards.add(card);
                                 }
 
 
@@ -310,26 +314,54 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
     }
 
-    private void addToTheFirstColumn() {
 
-        ArrayList firstColumn = (ArrayList) allCards.clone();
-       // System.out.println("mylog" + firstColumn.get(0));
-        System.out.println("mylog first " + firstColumn);
+
+    private void addToTheFirstColumn() {
+        CardsMove column1 = new CardsMove();
+
+        column1.addCard(new Card2("KC"));
+        column1.addCard(new Card2("QH"));
+
+        allCards.add(column1);
+        System.out.println("mylog first " + column1);
+
+
+       /*ArrayList firstColumn = (ArrayList) allCards.clone();
+       System.out.println("mylog" + firstColumn);
+        System.out.println("mylog first " + firstColumn);*/
+
 
 
     }
 
     private void addToTheSecondColumn() {
 
-        ArrayList secondColumn = (ArrayList) allCards.clone();
-        System.out.println("mylog second" + secondColumn);
+
+        CardsMove column2 = new CardsMove();
+
+        column2.addCard(new Card2("JC"));
+        column2.addCard(new Card2("10H"));
+        allCards.add(column2);
+        System.out.println("mylog second " + column2);
+
+
+
+      /*  ArrayList secondColumn = (ArrayList) allCards.clone();
+        System.out.println("mylog second " + secondColumn);*/
 
     }
 
     private void addToTheThirdColumn() {
 
-        ArrayList thirdColumn = (ArrayList) allCards.clone();
-        System.out.println("mylog third" + thirdColumn);
+        CardsMove column3 = new CardsMove();
+
+        column3.addCard(new Card2("9C"));
+        column3.addCard(new Card2("8H"));
+        allCards.add(column3);
+        System.out.println("mylog third " + column3);
+
+       /* ArrayList thirdColumn = (ArrayList) allCards.clone();
+        System.out.println("mylog third" + thirdColumn);*/
 
     }
 
@@ -364,15 +396,23 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
     public void addToList(View v) {
 
-        allCards.clear();
-        allCards.add("7S");
-        allCards.add("7C");
-        allCards.add("5D");
-        allCards.add("8D");
-        allCards.add("6D");
-        allCards.add("7D");
-        allCards.add("QH");
-        allCards.add("KC");
+        CardsMove column = new CardsMove();
+
+      /*  for (int i = 0; i < currentScanCards.size(); i++) {
+            column.addCard(new Card2(currentScanCards.get(i)));
+        }*/
+
+        column.addCard(new Card2("7S"));
+        column.addCard(new Card2("7C"));
+        column.addCard(new Card2("8D"));
+        column.addCard(new Card2("6D"));
+        column.addCard(new Card2("5D"));
+        column.addCard(new Card2("7D"));
+        column.addCard(new Card2("QH"));
+        column.addCard(new Card2("KC"));
+
+        allCards.add(column);
+
         resultTV.setText("");
 
         List<String> input = Collections.singletonList(getAllCards().toString());
@@ -388,18 +428,25 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     public void ongoClick(View v) {
 
         //TEST
-        allCards.clear();
-        allCards.add("7S");
-        allCards.add("7C");
-        allCards.add("5D");
-        allCards.add("8D");
-        allCards.add("6D");
-        allCards.add("7D");
-        allCards.add("QH");
-        allCards.add("KC");
+//        allCards.clear();
+//        allCards.add("7S");
+//        allCards.add("7C");
+//        allCards.add("5D");
+//        allCards.add("8D");
+//        allCards.add("6D");
+//        allCards.add("7D");
+//        allCards.add("QH");
+//        allCards.add("KC");
+
+        ArrayList<String> allCardsAsCommanSeparatedList = new ArrayList<>();
+        for (int i = 0; i < allCards.size(); i++) {
+            CardsMove column = allCards.get(i);
+            String titles = column.getTitlesAsCommaSeparatedStringList();
+            allCardsAsCommanSeparatedList.add(titles);
+        }
 
         Intent intent = new Intent(getBaseContext(), ResultActivity.class);
-        intent.putExtra("EXTRA_CARDS_INPUT", allCards);
+        intent.putExtra("EXTRA_CARDS_INPUT", allCardsAsCommanSeparatedList);
         startActivity(intent);
 
 

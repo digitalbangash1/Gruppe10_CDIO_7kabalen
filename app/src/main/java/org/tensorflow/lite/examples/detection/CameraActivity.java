@@ -137,6 +137,9 @@ public abstract class CameraActivity extends AppCompatActivity
 
 
 
+
+
+
     /*
         Go_btn.setOnClickListener(new View.OnClickListener() {
           public void onClick(View v) {

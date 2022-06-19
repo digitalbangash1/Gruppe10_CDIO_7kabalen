@@ -17,6 +17,19 @@ public class CardsMove {
         cards.add(card);
     }
 
+    public String getTitlesAsCommaSeparatedStringList(){
+        String titles = "";
+        for (int i = 0; i < cards.size(); i++) {
+            Card2 card = cards.get(i);
+            titles += card.getTitle() + ",";
+        }
+        titles = titles.trim();
+        if(titles.endsWith(",")){
+            titles = titles.substring(0, titles.length()-1);
+        }
+        return titles;
+    }
+
     @Override
     public String toString() {
         String info = "";

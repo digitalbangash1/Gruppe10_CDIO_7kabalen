@@ -255,7 +255,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                                 currentScanCards.add("10D");*/
 
                                 String card = result.getTitle();
-                                if (!currentScanCards.contains(card) && result.getConfidence() > minimumConfidenceScan && scan_btn.isPressed()) {
+                                if (!currentScanCards.contains(card) && result.getConfidence() > minimumConfidenceScan ) {
                                     currentScanCards.add(card);
                                 }
 

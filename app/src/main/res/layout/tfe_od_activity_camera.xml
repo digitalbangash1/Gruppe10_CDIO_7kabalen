@@ -99,6 +99,8 @@
                 android:layout_marginBottom="60dp"
                 android:backgroundTint="#FF0000"
                 android:onClick="removeFromList"
+
+
                 android:text="Remove" />
 
             <Button

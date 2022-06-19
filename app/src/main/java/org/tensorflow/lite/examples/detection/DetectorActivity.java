@@ -86,6 +86,13 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
     ArrayList<CardsMove> allCards = new ArrayList<>();
 
+    public ArrayList<String> getCurrentScanCards() {
+        return currentScanCards;
+    }
+
+    ArrayList<String> currentScanCards = new ArrayList<>();
+    String[] columns = {"1", "2", "3", "4", "5", "6", "7"};
+
 
     private long lastProcessingTimeMs;
     private Bitmap rgbFrameBitmap = null;
@@ -168,7 +175,6 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         tracker.setFrameConfiguration(previewWidth, previewHeight, sensorOrientation);
     }
 
-    ArrayList<String> currentScanCards = new ArrayList<>();
 
     @Override
     protected void processImage() {
@@ -243,10 +249,17 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
                 }*/
 
+                             /*   currentScanCards.add("KC");
+                                currentScanCards.add("QH");
+                                currentScanCards.add("JS");
+                                currentScanCards.add("10D");*/
+
                                 String card = result.getTitle();
                                 if (!currentScanCards.contains(card) && result.getConfidence() > minimumConfidenceScan && scan_btn.isPressed()) {
                                     currentScanCards.add(card);
                                 }
+
+                                System.out.println("mylog currentcards" + currentScanCards);
 
 
                                 //updateTextView("hey");
@@ -279,11 +292,10 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     /********************************************************************************************/
 
 
-
     public void selectColumnn(View v) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Choose column");
-        String[] columns = {"1", "2", "3", "4", "5", "6", "7"};
+
         builder.setItems(columns, ((dialogInterface, which) -> {
             switch (which) {
                 case 0:
@@ -315,8 +327,9 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     }
 
 
-
     private void addToTheFirstColumn() {
+
+
         CardsMove column1 = new CardsMove();
 
         column1.addCard(new Card2("KC"));
@@ -329,7 +342,6 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
        /*ArrayList firstColumn = (ArrayList) allCards.clone();
        System.out.println("mylog" + firstColumn);
         System.out.println("mylog first " + firstColumn);*/
-
 
 
     }
@@ -402,7 +414,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
             column.addCard(new Card2(currentScanCards.get(i)));
         }*/
 
-        column.addCard(new Card2("7S"));
+      /*  column.addCard(new Card2("7S"));
         column.addCard(new Card2("7C"));
         column.addCard(new Card2("8D"));
         column.addCard(new Card2("6D"));
@@ -411,16 +423,17 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         column.addCard(new Card2("QH"));
         column.addCard(new Card2("KC"));
 
-        allCards.add(column);
+        allCards.add(column);*/
 
         resultTV.setText("");
 
-        List<String> input = Collections.singletonList(getAllCards().toString());
+        List<String> input = Collections.singletonList(getCurrentScanCards().toString());
         //resultTV.setText((CharSequence) input);
         for (int i = 0; i < input.size(); i++) {
             resultTV.append(input.get(i));
             remove.setEnabled(true);
-            System.out.println("get the batata" + getAllCards().toString());
+            System.out.println("mylog" + getCurrentScanCards().toString());
+
         }
 
     }
@@ -485,23 +498,29 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
 
     public void removeFromList(View v) {
-        int index = getAllCards().size() - 1;
-        if (getAllCards().isEmpty()) {
+        int index = getCurrentScanCards().size() - 1;
+        if (getCurrentScanCards().isEmpty()) {
             remove.setEnabled(false);
 
         } else
-            getAllCards().remove(index);
+            getCurrentScanCards().remove(index);
 
         updateTextView();
 
 
-        System.out.println("mylog" + getAllCards().toString());
+        System.out.println("mylog" + getCurrentScanCards().toString());
     }
+
+    public void ifTheRemoveIsLongPressed(View v) {
+
+    }
+
+
 
 
     public void updateTextView() {
         resultTV.setText("");
-        resultTV.setText(getAllCards().toString());
+        resultTV.setText(getCurrentScanCards().toString());
     }
 
 

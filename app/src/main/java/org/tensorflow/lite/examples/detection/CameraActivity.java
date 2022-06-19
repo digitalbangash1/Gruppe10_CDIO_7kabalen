@@ -212,6 +212,8 @@ public abstract class CameraActivity extends AppCompatActivity
 
 
 
+
+
         ViewTreeObserver vto = gestureLayout.getViewTreeObserver();
         vto.addOnGlobalLayoutListener(
                 new ViewTreeObserver.OnGlobalLayoutListener() {

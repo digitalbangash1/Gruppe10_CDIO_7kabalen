@@ -48,6 +48,8 @@
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
+            android:layout_marginEnd="-4dp"
+            android:layout_marginBottom="-27dp"
             tools:context="org.tensorflow.demo.CameraActivity">
 
 
@@ -58,86 +60,76 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:layout_gravity="bottom"
-                android:layout_marginBottom="140dp"
+                android:layout_marginBottom="150dp"
                 android:background="@drawable/cards"
                 android:textColor="#FFF"
-                android:textSize="27sp"
+                android:textSize="36sp"
 
-                ></TextView>
+                >
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="64dp"
-                android:layout_marginHorizontal="1sp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_gravity="bottom"
+            </TextView>
+
+            <Button
+                android:id="@+id/Scan_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|bottom"
+                android:layout_marginStart="30dp"
                 android:layout_marginBottom="60dp"
-                android:gravity="center">
+                android:backgroundTint="#FFA500"
+                android:onClick="addToList"
+                android:text="scan" />
 
-                <Button
-                    android:id="@+id/Scan_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#FFA500"
-                    android:onClick="addToList"
-                    android:text="Show cards"
-                    android:textSize="10sp" />
+            <Button
+                android:id="@+id/Goo_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginBottom="60dp"
+                android:backgroundTint="#00FF00"
+                android:onClick="ongoClick"
+                android:text="Go" />
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#3F51B5"
-                    android:onClick="selectColumnn"
-                    android:text="choose column"
-                    android:textSize="10sp">
-
-                </Button>
-
-                <Button
-                    android:id="@+id/Goo_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#00FF00"
-                    android:onClick="ongoClick"
-                    android:text="Go"
-                    android:textSize="12sp" />
-
-                <Button
-                    android:id="@+id/remove_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#FF0000"
-                    android:onClick="removeFromList"
-                    android:text="Remove"
-                    android:textColor="#000"
-                    android:textSize="10sp" />
-
-            </LinearLayout>
+            <Button
+                android:id="@+id/remove_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|bottom"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="60dp"
+                android:backgroundTint="#FF0000"
+                android:onClick="removeFromList"
 
 
+                android:text="Remove" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity=""
+                android:text="choose"
+                android:onClick="selectColumnn">
+
+            </Button>
         </FrameLayout>
 
-
     </RelativeLayout>
-
 
     <include
         android:id="@+id/bottom_sheet_layout"
         layout="@layout/tfe_od_layout_bottom_sheet" />
 
-
-    <!--    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/MyRecyclerView"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="70dp"
-            android:foregroundGravity="center"
-            android:gravity="center"
-            app:layout_anchor="@+id/bottom_sheet_layout"
-            app:layout_anchorGravity="top|center"
-            tools:listitem="@layout/cardsitem" />-->
+<!--    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/MyRecyclerView"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="70dp"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        app:layout_anchor="@+id/bottom_sheet_layout"
+        app:layout_anchorGravity="top|center"
+        tools:listitem="@layout/cardsitem" />-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

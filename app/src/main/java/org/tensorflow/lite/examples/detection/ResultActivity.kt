@@ -32,16 +32,23 @@ class ResultActivity : AppCompatActivity() {
         val resultTextView = findViewById<TextView>(R.id.Result)
         val firsttext = findViewById<TextView>(R.id.FirstResul)
 
-        val allCards = intent.getStringArrayListExtra("EXTRA_CARDS_INPUT")
+        val allCardsCommaSeparatedList = intent.getStringArrayListExtra("EXTRA_CARDS_INPUT")
+
+
+
         val movesFinder = MovesFinder()
-        val moves = movesFinder.findMoves(allCards)
+        val moves = movesFinder.findMovesForColumns(allCardsCommaSeparatedList)
         var allMovesText = "";
         println("mylog print all moves: " + moves.size)
         for (i in moves.indices) {
-            println("mylog move: " + moves[i].toString())
+            val move = moves[i];
+            println("mylog move: " + move.columnOnTop + " can be on top of " + move.columnAtBottom)
 
 
-            allMovesText +="* You can move "+ moves[i].toString() +". "+ "\n\n"
+            //allMovesText +="* You can move column "+ moves[i].toString() +". "+ "\n\n"
+            allMovesText+= " You can move column " +move.columnOnTop+" " + "to" +" "+ move.columnAtBottom +". "+ "\n\n"
+            println("mylog printline"+ allMovesText)
+
         }
         firsttext.setText(allMovesText)
         println("mylog print all moves-----done")

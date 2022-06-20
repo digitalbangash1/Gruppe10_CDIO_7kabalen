@@ -331,7 +331,6 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
 
         CardsMove column1 = new CardsMove();
-
         column1.addCard(new Card2("KC"));
         column1.addCard(new Card2("QH"));
 
@@ -414,7 +413,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
             column.addCard(new Card2(currentScanCards.get(i)));
         }*/
 
-      /*  column.addCard(new Card2("7S"));
+        column.addCard(new Card2("7S"));
         column.addCard(new Card2("7C"));
         column.addCard(new Card2("8D"));
         column.addCard(new Card2("6D"));
@@ -423,7 +422,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         column.addCard(new Card2("QH"));
         column.addCard(new Card2("KC"));
 
-        allCards.add(column);*/
+        allCards.add(column);
 
         resultTV.setText("");
 

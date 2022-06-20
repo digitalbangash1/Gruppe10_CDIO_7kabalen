@@ -255,7 +255,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                                 currentScanCards.add("10D");*/
 
                                 String card = result.getTitle();
-                                if (!currentScanCards.contains(card) && result.getConfidence() > minimumConfidenceScan ) {
+                                if (!currentScanCards.contains(card) && result.getConfidence() > minimumConfidenceScan  ) {
                                     currentScanCards.add(card);
                                 }
 
@@ -264,6 +264,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
                                 //updateTextView("hey");
                                 //System.out.println("Name of the card: " + result.getTitle());
+
                                 // System.out.println("Contents of arraylist: " + allCards);
 
                             }

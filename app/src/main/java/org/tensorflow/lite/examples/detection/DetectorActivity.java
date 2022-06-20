@@ -38,7 +38,14 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
+
+//change start
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+//change end
 
 import org.tensorflow.lite.examples.detection.customview.OverlayView;
 import org.tensorflow.lite.examples.detection.customview.OverlayView.DrawCallback;
@@ -79,18 +86,24 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
     private Detector detector;
 
-    public List<CardsMove> getAllCards() {
-        return allCards;
-    }
-
-
-    ArrayList<CardsMove> allCards = new ArrayList<>();
 
     public ArrayList<String> getCurrentScanCards() {
         return currentScanCards;
     }
 
+
+    TreeMap<Integer, CardsMove> columnsByIndex = new TreeMap<Integer, CardsMove>();
+
     ArrayList<String> currentScanCards = new ArrayList<>();
+
+    ArrayList<CardsMove> firstColumn = new ArrayList<>();
+    ArrayList<CardsMove> secondColumn = new ArrayList<>();
+    ArrayList<CardsMove> thirdColumn = new ArrayList<>();
+    ArrayList<CardsMove> fourthColumn = new ArrayList<>();
+    ArrayList<CardsMove> fifthColumn = new ArrayList<>();
+    ArrayList<CardsMove> sixthColumn = new ArrayList<>();
+    ArrayList<CardsMove> seventhColumn = new ArrayList<>();
+
     String[] columns = {"1", "2", "3", "4", "5", "6", "7"};
 
 
@@ -244,27 +257,14 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                                 result.setLocation(location);
                                 mappedRecognitions.add(result);
 
-               /* for (int i = 0; i < allCards.size(); i++) {
-                 resultTV.append(allCards.get(i));
-
-                }*/
-
-                             /*   currentScanCards.add("KC");
-                                currentScanCards.add("QH");
-                                currentScanCards.add("JS");
-                                currentScanCards.add("10D");*/
 
                                 String card = result.getTitle();
-                                if (!currentScanCards.contains(card) && result.getConfidence() > minimumConfidenceScan ) {
+                                if (!currentScanCards.contains(card) && result.getConfidence() > minimumConfidenceScan) {
                                     currentScanCards.add(card);
                                 }
 
                                 System.out.println("mylog currentcards" + currentScanCards);
 
-
-                                //updateTextView("hey");
-                                //System.out.println("Name of the card: " + result.getTitle());
-                                // System.out.println("Contents of arraylist: " + allCards);
 
                             }
                         }
@@ -291,124 +291,72 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
     /********************************************************************************************/
 
-
+    /**
+     * The method is responsible for showing the dialogbox with custom items. When clicked, the
+     * currentScanCards will be added to selected items. By doing so the Tree Map will know which
+     * columns the cards are added to.
+     * @param v
+     */
     public void selectColumnn(View v) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Choose column");
 
         builder.setItems(columns, ((dialogInterface, which) -> {
-            switch (which) {
-                case 0:
-                    addToTheFirstColumn();
-                    break;
-                case 1:
-                    addToTheSecondColumn();
-                    break;
-                case 2:
-                    addToTheThirdColumn();
-                    break;
-                case 3:
-                    addToTheFourthColumn();
-                    break;
-                case 4:
-                    addToTheFifthColumn();
-                    break;
-                case 5:
-                    addToTheSixthColumn();
-                    break;
-                case 6:
-                    addToTheSeventhColumn();
-                    break;
+
+            CardsMove column = new CardsMove();
+            for (int i = 0; i < currentScanCards.size(); i++) {
+                column.addCard(new Card2(currentScanCards.get(i)));
             }
+
+            columnsByIndex.put(which, column);
+
+            System.out.println("mylog column nr" + which + column);
+
+            //For Test, uncomment the following code
+
+           /* CardsMove column1 = new CardsMove();
+            column1.addCard(new Card2("KS"));
+            column1.addCard(new Card2("QH"));
+            columnsByIndex.put(0, column1);
+
+
+            CardsMove column2 = new CardsMove();
+            column2.addCard(new Card2("JS"));
+            columnsByIndex.put(1, column2);
+
+            CardsMove column3 = new CardsMove();
+            column3.addCard(new Card2("10H"));
+            columnsByIndex.put(2, column3);*/
+
+
         }));
+
+
         AlertDialog dialog = builder.create();
         dialog.show();
 
     }
 
-
-    private void addToTheFirstColumn() {
-
-
-        CardsMove column1 = new CardsMove();
-
-        column1.addCard(new Card2("KC"));
-        column1.addCard(new Card2("QH"));
-
-        allCards.add(column1);
-        System.out.println("mylog first " + column1);
-
-
-       /*ArrayList firstColumn = (ArrayList) allCards.clone();
-       System.out.println("mylog" + firstColumn);
-        System.out.println("mylog first " + firstColumn);*/
-
-
-    }
-
-    private void addToTheSecondColumn() {
-
-
-        CardsMove column2 = new CardsMove();
-
-        column2.addCard(new Card2("JC"));
-        column2.addCard(new Card2("10H"));
-        allCards.add(column2);
-        System.out.println("mylog second " + column2);
-
-
-
-      /*  ArrayList secondColumn = (ArrayList) allCards.clone();
-        System.out.println("mylog second " + secondColumn);*/
-
-    }
-
-    private void addToTheThirdColumn() {
-
-        CardsMove column3 = new CardsMove();
-
-        column3.addCard(new Card2("9C"));
-        column3.addCard(new Card2("8H"));
-        allCards.add(column3);
-        System.out.println("mylog third " + column3);
-
-       /* ArrayList thirdColumn = (ArrayList) allCards.clone();
-        System.out.println("mylog third" + thirdColumn);*/
-
-    }
-
-    private void addToTheFourthColumn() {
-
-        ArrayList fourthColumn = (ArrayList) allCards.clone();
-        System.out.println("mylog fourth" + fourthColumn);
-
-    }
-
-    private void addToTheFifthColumn() {
-
-        ArrayList fifthColumn = (ArrayList) allCards.clone();
-        System.out.println("mylog fifth" + fifthColumn);
-
-    }
-
-    private void addToTheSixthColumn() {
-
-        ArrayList sixthColumn = (ArrayList) allCards.clone();
-        System.out.println("mylog sixth" + sixthColumn);
-
-    }
-
-    private void addToTheSeventhColumn() {
-
-        ArrayList seventhColumn = (ArrayList) allCards.clone();
-        System.out.println("mylog seventh" + seventhColumn);
-
-    }
-
-
+    /**
+     * The function comes in use when the user press the show button. The function is responsible
+     * for showing the arraylist to the TextView
+     * @param v
+     * @
+     */
     public void addToList(View v) {
 
-        CardsMove column = new CardsMove();
+        resultTV.setText("");
+
+        List<String> input = Collections.singletonList(getCurrentScanCards().toString());
+        //resultTV.setText((CharSequence) input);
+        for (int i = 0; i < input.size(); i++) {
+            resultTV.append(input.get(i));
+            remove.setEnabled(true);
+            System.out.println("mylog" + getCurrentScanCards().toString());
+
+        }
+
+        //CardsMove column = new CardsMove();
 
       /*  for (int i = 0; i < currentScanCards.size(); i++) {
             column.addCard(new Card2(currentScanCards.get(i)));
@@ -424,43 +372,57 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         column.addCard(new Card2("KC"));
 
         allCards.add(column);*/
-
-        resultTV.setText("");
-
-        List<String> input = Collections.singletonList(getCurrentScanCards().toString());
-        //resultTV.setText((CharSequence) input);
-        for (int i = 0; i < input.size(); i++) {
-            resultTV.append(input.get(i));
-            remove.setEnabled(true);
-            System.out.println("mylog" + getCurrentScanCards().toString());
-
-        }
-
     }
 
-    public void ongoClick(View v) {
+    /**
+     * The method iterates over the entries stored in columnIndex(Tree Map) and the values
+     * are stores in column object. Another method getTitlesAsCommaSeparatedStringList is
+     * called and the strings are added to the allCardsAsCommanSeparatedList ArrayList
+     * The results are passed in putExtra method to ResultActivity in order to show result.
+     *
+     */
+    public void onGoClick(View v) {
 
-        //TEST
-//        allCards.clear();
-//        allCards.add("7S");
-//        allCards.add("7C");
-//        allCards.add("5D");
-//        allCards.add("8D");
-//        allCards.add("6D");
-//        allCards.add("7D");
-//        allCards.add("QH");
-//        allCards.add("KC");
 
+        //change start
         ArrayList<String> allCardsAsCommanSeparatedList = new ArrayList<>();
-        for (int i = 0; i < allCards.size(); i++) {
-            CardsMove column = allCards.get(i);
+        //note: The TreeMap class that we use will sort columns by the key which is an integer.
+        //so even if you add columns 3, 5, 2 in that order, you will get them here as: 2, 3, 5
+        //which is the order you want.
+        Set entrySet = columnsByIndex.entrySet();
+        Iterator iterator = entrySet.iterator();
+        while (iterator.hasNext()) {
+            Map.Entry entry = (Map.Entry) iterator.next();
+            CardsMove column = (CardsMove) entry.getValue();
             String titles = column.getTitlesAsCommaSeparatedStringList();
             allCardsAsCommanSeparatedList.add(titles);
+
         }
 
         Intent intent = new Intent(getBaseContext(), ResultActivity.class);
         intent.putExtra("EXTRA_CARDS_INPUT", allCardsAsCommanSeparatedList);
         startActivity(intent);
+
+		/*
+        for (int i = 0; i < allCards.size(); i++) {
+            CardsMove column = allCards.get(i);
+            String titles = column.getTitlesAsCommaSeparatedStringList();
+            allCardsAsCommanSeparatedList.add(titles);
+        }*/
+        //change end
+
+
+
+/*        //TEST
+        allCards.clear();
+        allCards.add("7S");
+        allCards.add("7C");
+        allCards.add("5D");
+        allCards.add("8D");
+        allCards.add("6D");
+        allCards.add("7D");
+        allCards.add("QH");
+        allCards.add("KC");*/
 
 
 //        Context context = getApplicationContext();
@@ -482,21 +444,24 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 //        allCards.add("QH");
 //        allCards.add("KC");
 
-//        System.out.println("toti2 allCards: " + allCards);
+//        System.out.println("mylog allCards: " + allCards);
 
 //        MovesFinder movesFinder = new MovesFinder();
 //        ArrayList<CardsMove> moves = movesFinder.findMoves(allCards);
-//        System.out.println("toti print all moves: " + moves.size());
+//        System.out.println("mylog print all moves: " + moves.size());
 //        for (int i = 0; i < moves.size(); i++) {
-//            System.out.println("toti move: "+moves.get(i).toString());
+//            System.out.println("mylog move: "+moves.get(i).toString());
 //        }
-//        System.out.println("toti print all moves-----done");
+//        System.out.println("mylog print all moves-----done");
 //
 //        Toast toast2 = Toast.makeText(context, "at lasttt: " + moves.size(), duration);
 //        toast2.show();
     }
 
-
+    /**
+     * The method removes the last index of the CurrentScanCards by pressing the remove button and updating the view
+     * @param v
+     */
     public void removeFromList(View v) {
         int index = getCurrentScanCards().size() - 1;
         if (getCurrentScanCards().isEmpty()) {
@@ -510,12 +475,6 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
         System.out.println("mylog" + getCurrentScanCards().toString());
     }
-
-    public void ifTheRemoveIsLongPressed(View v) {
-
-    }
-
-
 
 
     public void updateTextView() {

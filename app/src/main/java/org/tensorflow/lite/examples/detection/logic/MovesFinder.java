@@ -82,7 +82,4 @@ public class MovesFinder {
         }
         return true;
     }
-
-
-
 }

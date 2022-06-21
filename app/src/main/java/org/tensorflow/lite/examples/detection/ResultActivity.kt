@@ -46,7 +46,7 @@ class ResultActivity : AppCompatActivity() {
 
 
             //allMovesText +="* You can move column "+ moves[i].toString() +". "+ "\n\n"
-            allMovesText+= " You can move column " +move.columnOnTop+" " + "to" +" "+ move.columnAtBottom +". "+ "\n\n"
+            allMovesText+= "* You can move column (" +move.columnOnTop+" " + "to" +" "+ move.columnAtBottom +"). "+ "\n\n"
             println("mylog printline"+ allMovesText)
 
         }

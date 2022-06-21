@@ -311,7 +311,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
             columnsByIndex.put(which, column);
 
             System.out.println("mylog column nr" + which + column);
-
+            currentScanCards.clear();
             //For Test, uncomment the following code
 
            /* CardsMove column1 = new CardsMove();
@@ -334,7 +334,8 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
         AlertDialog dialog = builder.create();
         dialog.show();
-
+        resultTV.setText("");
+       // currentScanCards.clear();
     }
 
     /**

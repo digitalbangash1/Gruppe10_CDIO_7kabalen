@@ -310,7 +310,8 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
             columnsByIndex.put(which, column);
 
-            System.out.println("mylog column nr" + which + column);
+            System.out.println("mylog column" +
+                    " nr" + which + column);
             currentScanCards.clear();
             //For Test, uncomment the following code
 
@@ -499,7 +500,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     // Which detection model to use: by default uses Tensorflow Object Detection API frozen
     // checkpoints.
     private enum DetectorMode {
-        TF_OD_API;
+        TF_OD_API
     }
 
     @Override
